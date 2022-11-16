@@ -48,7 +48,7 @@
                     </a>
                   </td>
                   <td>
-                    <a  onclick="return confirm('Có chắc muốn xoá chưa?')" href="{{URL::to('/blog_post/'.$post->id.'/delete')}}">
+                    <a  onclick="return confirm('Có chắc muốn xoá chưa hả?')" href="{{URL::to('/blog_post/'.$post->id.'/delete')}}">
                       <i style="font-size: 20px;" class="fa fa-trash" aria-hidden="false"></i>
                     </a>
                   </td>
