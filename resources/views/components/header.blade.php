@@ -21,12 +21,47 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 484 Lạch Tray, HP
                             </li>
+
+                            <?php
+                            $customer_id = Session::get('customer_id');
+                            $shipping_id = Session::get('shipping_id');
+                            if ($customer_id!=NULL&&$shipping_id==NULL){
+                            ?>
                             <li>
-                                <a href="dang_ky.html" class="text-white">Đăng ký</a>
+                                <a href="{{URL::to('/checkout')}}" class="text-white">Thanh toán</a>
                             </li>
+                            <?php
+                            }elseif($customer_id!=NULL&&$shipping_id!=NULL){
+                            ?>
                             <li>
-                                <a href="dang_nhap.html" class="text-white">Đăng nhập</a>
+                                <a href="{{URL::to('/payment')}}" class="text-white">Thanh toán</a>
                             </li>
+                            <?php
+                            }else{
+                            ?>
+                            <li>
+                                <a href="{{URL::to('/login-checkout')}}" class="text-white">Thanh toán</a>
+                            </li>
+                            <?php
+                            }
+                            ?>
+
+                            <?php
+                            $customer_id = Session::get('customer_id');
+                            if ($customer_id!=NULL){
+                            ?>
+                            <li>
+                                <a href="{{URL::to('/logout-checkout')}}" class="text-white">Đăng xuất</a>
+                            </li>
+                            <?php
+                            }else{
+                            ?>
+                            <li>
+                                <a href="{{URL::to('/login-checkout')}}" class="text-white">Đăng nhập</a>
+                            </li>
+                            <?php
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -65,7 +100,7 @@
 
                                                 <ul class="submenu dropdown-menu" >
                                                     @foreach($item->categoryChildren as $subMenu)
-                                                        <li><a href="{{URL::to('/'.$item->slug_category_product.'/'.$subMenu->slug_category_product)}}">{{$subMenu->category_name}}</a></li>
+                                                        <li><a href="{{URL::to('/'.$item->slug_category_product.'/'.$subMenu->category_id)}}">{{$subMenu->category_name}}</a></li>
                                                     @endforeach
                                                 </ul>
                                             @else
@@ -85,21 +120,62 @@
                                     </button>
                                 </li>
                                 <li>
-                                    <a type="button" class="cart_btn" href="card.html">
+                                    <a type="button" class="cart_btn" href="{{URL::to('/show-cart')}}">
                                         <i class="fal fa-shopping-bag"></i>
                                         <small class="cart_counter">2</small>
                                     </a>
                                 </li>
+
+                                <?php
+                                $customer_id = Session::get('customer_id');
+                                $shipping_id = Session::get('shipping_id');
+                                if ($customer_id!=NULL&&$shipping_id==NULL){
+                                ?>
                                 <li>
-                                    <a type="button" class="cart_btn hiddened" href="dang_ky.html">
-                                        <i class="fal fa-user"></i>ĐĂNG KÝ
+                                    <a type="button" class="cart_btn hiddened" href="{{URL::to('/checkout')}}">
+                                        THANH TOÁN
                                     </a>
                                 </li>
+                                <?php
+                                }elseif($customer_id!=NULL&&$shipping_id!=NULL){
+                                ?>
                                 <li>
-                                    <a type="button" class="cart_btn hiddened me-3" href="dang_nhap.html">
+                                    <a type="button" class="cart_btn hiddened" href="{{URL::to('/payment')}}">
+                                        THANH TOÁN
+                                    </a>
+                                </li>
+                                <?php
+                                }else{
+                                ?>
+                                <li>
+                                    <a type="button" class="cart_btn hiddened" href="{{URL::to('/login-checkout')}}">
+                                        THANH TOÁN
+                                    </a>
+                                </li>
+                                <?php
+                                }
+                                ?>
+
+                                <?php
+                                $customer_id = Session::get('customer_id');
+                                if ($customer_id!=NULL){
+                                ?>
+                                <li>
+                                    <a type="button" class="cart_btn hiddened me-3" href="{{URL::to('/logout-checkout')}}">
+                                        ĐĂNG XUẤT
+                                    </a>
+                                </li>
+                                <?php
+                                }else{
+                                ?>
+                                <li>
+                                    <a type="button" class="cart_btn hiddened me-3" href="{{URL::to('/login-checkout')}}">
                                         ĐĂNG NHẬP
                                     </a>
                                 </li>
+                                <?php
+                                }
+                                ?>
                             </ul>
                         </nav>
                     </div>

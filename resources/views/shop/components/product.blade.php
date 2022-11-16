@@ -63,11 +63,11 @@
                                             </div>
                                         </div>
                                         <h4 class="pp__title pp__title--2">
-                                            <a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}">{{$product->produc_name}}</a>
+                                            <a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}">{{$product->product_name}}</a>
                                         </h4>
                                         <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
                                             <h6 class="label">Giá - </h6>
-                                            <span class="price"> {{$product->product_price}} / <span class="regular"><del>760.000</del></span></span>
+                                            <span class="price"> {{number_format($product->product_price).'đ'}} / <span class="regular"><del>{{number_format($product->product_price_old).'đ'}}</del></span></span>
                                         </div>
                                     </div>
                                 </div>

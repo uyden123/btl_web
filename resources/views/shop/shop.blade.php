@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="{{asset('public/frontend/images/logo/favourite_icon.png')}}">
 
     @include('components.css')
-    @yield('css')
+    @yield('stylesheet')
 
 </head>
 

@@ -30,6 +30,7 @@ class ProductController extends Controller
         $data['product_name'] = $request->product_name;
         $data['slug_product'] = $request->slug_product;
         $data['product_price'] = $request->product_price;
+        $data['product_price_old'] = $request->product_price_old;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $data['category_id'] = $request->cate_product;
@@ -76,6 +77,7 @@ class ProductController extends Controller
         $data['product_name'] = $request->product_name;
         $data['slug_product'] = $request->slug_product;
         $data['product_price'] = $request->product_price;
+        $data['product_price_old'] = $request->product_price_old;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $data['category_id'] = $request->cate_product;
@@ -104,33 +106,11 @@ class ProductController extends Controller
         return Redirect::to('all-product');
     }
 
-    public function show_brand_home($brand_id){
-        $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
-        $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')->orderby('brand_id','desc')->get();
-        $brand_by_id = DB::table('tbl_product')
-            ->join('tbl_brand_product','tbl_brand_product.brand_id','=','tbl_product.brand_id')
-            ->where('tbl_product.brand_id', $brand_id)->get();
-        $brand_name = DB::table('tbl_brand_product')->where('tbl_brand_product.brand_id',$brand_id)->limit(1)->get();
-        return view('category.show_brand')->with('category',$cate_product)->with('brand',$brand_product)
-            ->with('brand_by_id',$brand_by_id)->with('brand_name',$brand_name);
-    }
-
     public function details_product($product_id){
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
-        $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')->orderby('brand_id','desc')->get();
         $details_product = DB::table('tbl_product')
             ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
             ->where('tbl_product.product_id',$product_id)->get();
-        return view('pages.details_product')->with('category',$cate_product)->with('brand',$brand_product)->with('details_product',$details_product);
-    }
-
-    public function show_category_home($category_id){
-        $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
-        $category_by_id = DB::table('tbl_product')
-            ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
-            ->where('tbl_product.category_id', $category_id)->get();
-        $category_name = DB::table('tbl_category_product')->where('tbl_category_product.category_id', $category_id)->limit(1)->get();
-        return view('shop.components.product')->with('category',$cate_product)
-            ->with('category_by_id',$category_by_id)->with('category_name', $category_name);
+        return view('shop.components.product_details')->with('category',$cate_product)->with('details_product',$details_product);
     }
 }

@@ -41,7 +41,8 @@
                             <th>Tên san pham</th>
                             <th>Slug</th>
                             <th>Hinh anh</th>
-                            <th>Gia</th>
+                            <th>Gia moi</th>
+                            <th>Gia cu</th>
                             <th>Danh muc</th>
                             <th>Trạng thái</th>
                             <th style="width:30px;"></th>
@@ -53,6 +54,7 @@
                                 <td>{{ $pro->product_name }}</td>
                                 <td><img src="public/upload/product/{{$pro->product_image}}" height="100px" width="100px"></td>
                                 <td>{{ $pro->product_price }}</td>
+                                <td>{{ $pro->product_price_old }}</td>
                                 <td>{{ $pro->category_name }}</td>
                                 <td>
                                 <span class="text-ellipsis">

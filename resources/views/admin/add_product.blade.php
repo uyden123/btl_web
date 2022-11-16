@@ -26,8 +26,12 @@
                                 <input type="text" name="slug_product" class="form-control" id="exampleInputEmail1" placeholder="Tên product">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Gia product</label>
+                                <label for="exampleInputEmail1">Gia product moi</label>
                                 <input type="text" name="product_price" class="form-control" id="exampleInputEmail1" placeholder="Tên product">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Gia product cu</label>
+                                <input type="text" name="product_price_old" class="form-control" id="exampleInputEmail1" placeholder="Tên product">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên product</label>
