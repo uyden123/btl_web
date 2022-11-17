@@ -773,7 +773,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     margin: 1.5em 0;
 }
 /*--market--*/
-.panel-heading {
+.panel-heading{
     position: relative;
     height: 57px;
     line-height: 57px;
@@ -788,6 +788,16 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     text-transform: uppercase;
     text-align: center;
 }
+
+.panel-heading a{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-transform: initial;
+    background-color: #9db2a0;
+    border-color: #9db2a0;
+}
+
 .panel {
     border: none ! important;
 }

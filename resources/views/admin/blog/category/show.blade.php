@@ -16,7 +16,7 @@
     <div class="row panel-body">
       <div class="col-md-12">
         <div class="box-header" style="margin: 1rem .5rem 1rem 0; text-align:center;">
-          <a class=" btn btn-success d-flex" href="{{ URL::to('/blog_category/add_blog_category')}}">Thêm danh mục</a>
+          <a class=" btn btn-success d-flex" href="{{ URL::to('/admin/blog_category/add_blog_category')}}">Thêm danh mục</a>
         </div>
         <div class="box" style="border-top: 1px solid #000; padding-top: 1rem">
           <div class="box-body">
@@ -26,7 +26,8 @@
                   <th>No.</th>
                   <th>Tên danh mục</th>
                   <th>Slug</th>
-                  <th>Sửa</th>
+                  <th>Tạo ngày</th>
+                  <th>Cập nhật</th>
                   <th>Xoá</th>
                 </tr>
               </thead>
@@ -36,13 +37,14 @@
                   <td>{{$loop->index + 1}}</td>
                   <td>{{$category->name}}</td>
                   <td>{{$category->slug}}</td>
+                  <td>{{$category->created_at}}</td>
                   <td>
-                    <a href="{{URL::to('/blog_category/'.$category->id.'/edit')}}">
+                    <a href="{{URL::to('/admin/blog_category/'.$category->id.'/edit')}}">
                       <i style="font-size: 20px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
                   </td>
                   <td>
-                    <a  onclick="return confirm('Có chắc muốn xoá chưa?')" href="{{URL::to('/blog_category/'.$category->id.'/delete')}}">
+                    <a  onclick="return confirm('Có chắc muốn xoá chưa?')" href="{{URL::to('/admin/blog_category/'.$category->id.'/delete')}}">
                       <i style="font-size: 20px;" class="fa fa-trash" aria-hidden="false"></i>
                     </a>
                   </td>

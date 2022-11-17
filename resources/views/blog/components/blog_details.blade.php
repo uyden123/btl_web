@@ -60,7 +60,7 @@
                         <div class="blog__sidebar mt-none-30">
                             <div class="widget mt-30">
                                 <h2 class="title">Tìm kiếm</h2>
-                                <form action="{{URL::to('/blog/search')}}" class="search-widget">
+                                <form action="{{URL::to('/blog')}}" class="search-widget">
                                     <input type="search" name="search" id="search" placeholder="Tìm kiếm bài viết">
                                     <button type="submit" class="btn"><i class="fal fa-search"> Tìm kiếm</i></button>
                                 </form>
@@ -84,7 +84,7 @@
                                         </div>
                                         <div class="content">
                                             <h5 class="rp-title border-effect">
-                                                <a href="{{URL::to('/blog-details/'.$post->slug)}}">
+                                                <a href="{{URL::to('/blog/'.$post->slug)}}">
                                                     {{$post->title}}
                                                 </a>
                                             </h5>

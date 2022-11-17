@@ -57,33 +57,35 @@ Route::post('/save-product', 'ProductController@save_product');
 Route::post('/update-product/{product_id}', 'ProductController@update_product');
 
 
+//Admin Blog
+Route::get('/admin/blog_post', 'BlogController@admin_post');
+Route::get('/admin/blog_tag', 'BlogController@admin_blog_tag');
+Route::get('/admin/blog_category', 'BlogController@admin_blog_category');
+Route::get('/admin/blog_post/add_post', 'BlogController@admin_add_post');
+Route::get('/admin/blog_tag/add_blog_tag', 'BlogController@admin_add_blog_tag');
+Route::get('/admin/blog_category/add_blog_category', 'BlogController@admin_add_blog_category');
+Route::post('/admin/blog_post/add_post', 'BlogController@add_post');
+Route::post('/admin/blog_tag/add_blog_tag', 'BlogController@add_blog_tag');
+Route::post('/admin/blog_category/add_blog_category', 'BlogController@add_blog_category');
+
+Route::get('/admin/blog_post/{id}/delete', 'BlogController@delete_blog_post');
+Route::get('/admin/blog_post/{id}/edit', 'BlogController@edit_blog_post');
+Route::post('/admin/blog_post/{id}/update', 'BlogController@update_blog_post');
+
+Route::get('/admin/blog_tag/{id}/delete', 'BlogController@delete_blog_tag');
+Route::get('/admin/blog_tag/{id}/edit', 'BlogController@edit_blog_tag');
+Route::post('/admin/blog_tag/{id}/update', 'BlogController@update_blog_tag');
+
+Route::get('/admin/blog_category/{id}/delete', 'BlogController@delete_blog_category');
+Route::get('/admin/blog_category/{id}/edit', 'BlogController@edit_blog_category');
+Route::post('/admin/blog_category/{id}/update', 'BlogController@update_blog_category');
+
 //Blog
-Route::get('/blog_post', 'BlogController@admin_post');
-Route::get('/blog_tag', 'BlogController@admin_blog_tag');
-Route::get('/blog_category', 'BlogController@admin_blog_category');
-Route::get('/blog_post/add_post', 'BlogController@admin_add_post');
-Route::get('/blog_tag/add_blog_tag', 'BlogController@admin_add_blog_tag');
-Route::get('/blog_category/add_blog_category', 'BlogController@admin_add_blog_category');
-Route::post('/blog_post/add_post', 'BlogController@add_post');
-Route::post('/blog_tag/add_blog_tag', 'BlogController@add_blog_tag');
-Route::post('/blog_category/add_blog_category', 'BlogController@add_blog_category');
-
-Route::get('/blog_post/{id}/delete', 'BlogController@delete_blog_post');
-Route::get('/blog_post/{id}/edit', 'BlogController@edit_blog_post');
-Route::post('/blog_post/{id}/update', 'BlogController@update_blog_post');
-
-Route::get('/blog_tag/{id}/delete', 'BlogController@delete_blog_tag');
-Route::get('/blog_tag/{id}/edit', 'BlogController@edit_blog_tag');
-Route::post('/blog_tag/{id}/update', 'BlogController@update_blog_tag');
-
-Route::get('/blog_category/{id}/delete', 'BlogController@delete_blog_category');
-Route::get('/blog_category/{id}/edit', 'BlogController@edit_blog_category');
-Route::post('/blog_category/{id}/update', 'BlogController@update_blog_category');
-
-Route::get('blog-details/{post}', 'BlogController@blog_details')->name('blog-details');
+Route::get('/blog/{post}', 'BlogController@blog_details')->name('blog-details');
 Route::get('/blog/tag/{tag}', 'BlogController@tag');
 Route::get('/blog/category/{category}', 'BlogController@category');
-Route::get('/blog/search/', 'BlogController@search')->name('search');
+Route::get('/blog', 'BlogController@search')->name('search');
+
 //card
 Route::post('/save-cart', 'CartController@save_cart');
 Route::get('/show-cart', 'CartController@show_cart');

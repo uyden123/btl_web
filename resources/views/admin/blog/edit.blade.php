@@ -11,26 +11,17 @@
     <!-- Main content -->
     <section class="panel">
         <header class="panel-heading">
-            Cập nhật bài viết
+            <a href="{{URL::to('/admin/blog_post')}}" class="btn btn-warning">
+                <i class="fa fa-arrow-left"> Trở về</i>
+            </a>
+            <span>Cập nhật bài viết</span>
         </header>
 
         <div class="row panel-body">
             <div class="col-md-12">
                 <div class="box position-center">
-                    <?php
-                    $message = Session::get('message');
-                    if ($message) {
-                        echo '<p class="alert alert-success justify-content-center text-center">' . $message . '</p>';
-                        Session::put('message', null);
-                    }
-
-                    if (count($errors) > 0) {
-                        foreach ($errors->all() as $error) {
-                            echo '<p class="alert alert-danger">' . $error . '</p>';
-                        }
-                    }
-                    ?>
-                    <form action="{{ URL::to('/blog_post/'.$post->id.'/update') }}" method="post" role="form" enctype="multipart/form-data">
+                    @include('components.errors')
+                    <form action="{{ URL::to('/admin/blog_post/'.$post->id.'/update') }}" method="post" role="form" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="blog_title">Tiêu đề bài viết</label>
@@ -89,7 +80,7 @@
                             </label>
                         </div>
                         <button type="submit" name="add_blog" class="btn btn-info">Cập nhật</button>
-                        <a href="{{URL::to('/blog_post')}}" class="btn btn-warning">Trở về</a>
+
                     </form>
                 </div>
             </div>

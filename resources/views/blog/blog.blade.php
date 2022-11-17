@@ -42,12 +42,12 @@
                                     <li><a href="#0"><i class="fal fa-calendar-alt"></i>{{$post->created_at->diffForHumans()}}</a></li>
                                 </ul>
                                 <div class="content mt-10">
-                                    <h2 class="title border-effect mb-10"><a href="{{URL::to('/blog-details/'.$post->slug)}}">{{$post->title}}</a></h2>
+                                    <h2 class="title border-effect mb-10"><a href="{{URL::to('/blog/'.$post->slug)}}">{{$post->title}}</a></h2>
                                     <p>{{$post->description}}
                                     </p>
                                 </div>
                                 <div class="bottom mt-35 d-flex align-items-center">
-                                    <a href="{{URL::to('/blog-details/'.$post->slug)}}" class="site-btn">đọc thêm</a>
+                                    <a href="{{URL::to('/blog/'.$post->slug)}}" class="site-btn">đọc thêm</a>
                                 </div>
                             </article>
                             @endforeach
@@ -61,7 +61,7 @@
                         <div class="blog__sidebar mt-none-30 wow fadeInUp" data-wow-delay=".1s">
                             <div class="widget mt-30">
                                 <h2 class="title">Tìm kiếm</h2>
-                                <form action="{{URL::to('/blog/search')}}" class="search-widget">
+                                <form action="{{URL::to('/blog')}}" class="search-widget">
                                     <input type="search" name="search" id="search" placeholder="Tìm kiếm bài viết">
                                     <button type="submit" class="btn"><i class="fal fa-search"> Tìm kiếm</i></button>
                                 </form>
@@ -85,7 +85,7 @@
                                         </div>
                                         <div class="content">
                                             <h5 class="rp-title border-effect">
-                                                <a href="{{URL::to('/blog-details/'.$post->slug)}}">
+                                                <a href="{{URL::to('/blog/'.$post->slug)}}">
                                                     {{$post->title}}
                                                 </a>
                                             </h5>

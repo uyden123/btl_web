@@ -11,26 +11,17 @@
     <!-- Main content -->
     <section class="panel">
         <header class="panel-heading">
+            <a href="{{URL::to('/admin/blog_post')}}" class="btn btn-warning">
+                <i class="fa fa-arrow-left"> Trở về</i>
+            </a>
             Thêm bài viết
         </header>
 
         <div class="row panel-body">
             <div class="col-md-12">
                 <div class="box position-center">
-                    <?php
-                    $message = Session::get('message');
-                    if ($message) {
-                        echo '<p class="alert alert-success justify-content-center text-center">' . $message . '</p>';
-                        Session::put('message', null);
-                    }
-
-                    if (count($errors) > 0) {
-                        foreach ($errors->all() as $error) {
-                            echo '<p class="alert alert-danger">' . $error . '</p>';
-                        }
-                    }
-                    ?>
-                    <form action="{{ URL::to('/blog_post/add_post') }}" method="post" role="form" enctype="multipart/form-data">
+                    @include('components.errors')
+                    <form action="{{ URL::to('/admin/blog_post/add_post') }}" method="post" role="form" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="blog_title">Tiêu đề bài viết</label>
@@ -57,7 +48,7 @@
                             <label>Tags</label>
                             <select class="form-control select2 select2-hidden-accessible" name="tags[]" data-placeholder="Chọn Tag" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                 @foreach($tags as $tag)
-                                    <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                <option value="{{$tag->id}}">{{$tag->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,8 +56,8 @@
                         <div class="form-group">
                             <label>Danh mục</label>
                             <select class="form-control select2 select2-hidden-accessible" name="categories[]" data-placeholder="Chọn danh mục" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                            @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -78,7 +69,6 @@
                             </label>
                         </div>
                         <button type="submit" name="add_blog" class="btn btn-info">Thêm bài viết</button>
-                        <a href="{{URL::to('/blog_post')}}" class="btn btn-warning">Trở về</a>
                     </form>
                 </div>
             </div>
@@ -92,7 +82,7 @@
 <script>
     $(".select2").select2();
 </script>
-<script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.20.0/full/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('editor1');
 </script>

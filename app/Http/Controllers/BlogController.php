@@ -23,7 +23,7 @@ class BlogController extends Controller
 
     public function admin_post()
     {
-        $posts = blog_post::all();
+        $posts = blog_post::all()->sortByDesc('created_at');
         return view('admin.blog.show', compact('posts'));
     }
 
@@ -60,9 +60,9 @@ class BlogController extends Controller
     public function add_post(Request $request)
     {
         $this->validate($request, [
-            "blog_title" => "required",
-            "blog_description" => "required",
-            "blog_slug" => "required",
+            "blog_title" => "required|unique:blog_posts,title",
+            "blog_description" => "required|unique:blog_posts,description",
+            "blog_slug" => "required|unique:blog_posts,slug",
             "blog_thumbnails" => "required",
             "blog_content" => "required"
         ]);
@@ -85,57 +85,43 @@ class BlogController extends Controller
         $post->tags()->sync($request->tags);
         $post->categories()->sync($request->categories);
         Session::flash('message', 'Đã thêm bài viết thành công!');
-        return redirect("/blog_post/add_post");
+        return redirect("/admin/blog_post/add_post");
     }
 
     public function add_blog_tag(Request $request)
     {
         $this->validate($request, [
-            "tag_name" => "required",
-            "tag_slug" => "required",
+            "tag_name" => "required|unique:blog_tags,name",
+            "tag_slug" => "required|unique:blog_tags,slug",
         ]);
-
-        $name = blog_tag::where('name', '=', $request->tag_name)->first();
-        $slug = blog_tag::where('slug', '=', $request->tag_slug)->first();
-        if ($name != null || $slug != null) {
-            Session::flash('m_error', 'TAG đã tồn tại!');
-            return redirect("/blog_tag/add_blog_tag");
-        }
 
         $tag = new blog_tag;
         $tag->name = $request->tag_name;
         $tag->slug = $request->tag_slug;
         $tag->save();
         Session::flash('message', 'Đã thêm TAG thành công!');
-        return redirect("/blog_tag/add_blog_tag");
+        return redirect("/admin/blog_tag/add_blog_tag");
     }
 
     public function add_blog_category(Request $request)
     {
         $this->validate($request, [
-            "category_name" => "required",
-            "category_slug" => "required",
+            "category_name" => "required|unique:blog_categories,name",
+            "category_slug" => "required|unique:blog_categories,slug",
         ]);
-
-        $name = blog_category::where('name', '=', $request->category_name)->first();
-        $slug = blog_category::where('slug', '=', $request->category_slug)->first();
-        if ($name != null || $slug != null) {
-            Session::flash('m_error', 'Danh mục đã tồn tại!');
-            return redirect("/blog_category/add_blog_category");
-        }
 
         $tag = new blog_category;
         $tag->name = $request->category_name;
         $tag->slug = $request->category_slug;
         $tag->save();
-        Session::flash('message', 'Đã thêm thể lại thành công!');
-        return redirect("/blog_category/add_blog_category");
+        Session::flash('message', 'Đã thêm danh mục thành công!');
+        return redirect("/admin/blog_category/add_blog_category");
     }
 
     public function delete_blog_post($id)
     {
         blog_post::where('id', $id)->delete();
-        return redirect("/blog_post");
+        return redirect("/admin/blog_post");
     }
 
     public function edit_blog_post($id)
@@ -173,13 +159,13 @@ class BlogController extends Controller
         $post->save();
         $post->tags()->sync($request->tags);
         $post->categories()->sync($request->categories);
-        return redirect("/blog_post");
+        return redirect()->back()->with('message', 'Đã cập nhật bài viết thành công!');
     }
 
     public function delete_blog_tag($id)
     {
         blog_tag::where('id', $id)->delete();
-        return redirect("/blog_tag");
+        return redirect("/admin/blog_tag");
     }
 
     public function edit_blog_tag($id)
@@ -195,24 +181,16 @@ class BlogController extends Controller
             "tag_slug" => "required",
         ]);
         $tag = blog_tag::where('id', $id)->first();
-
-        $name = blog_tag::where('name', '=', $request->tag_name)->first();
-        $slug = blog_tag::where('slug', '=', $request->tag_slug)->first();
-        if ($name != null || $slug != null) {
-            Session::flash('m_error', 'TAG đã tồn tại!');
-            return redirect("/blog_tag/add_blog_tag");
-        }
-
         $tag->name = $request->tag_name;
         $tag->slug = $request->tag_slug;
         $tag->save();
-        return redirect("/blog_tag");
+        return redirect()->back()->with('message', 'Đã cập nhật TAG thành công!');
     }
 
     public function delete_blog_category($id)
     {
         blog_category::where('id', $id)->delete();
-        return redirect("/blog_category");
+        return redirect("/admin/blog_category");
     }
 
     public function edit_blog_category($id)
@@ -228,18 +206,10 @@ class BlogController extends Controller
             "category_slug" => "required",
         ]);
         $category = blog_category::where('id', $id)->first();
-
-        $name = blog_category::where('name', '=', $request->category_name)->first();
-        $slug = blog_category::where('slug', '=', $request->category_slug)->first();
-        if ($name != null || $slug != null) {
-            Session::flash('m_error', 'Danh mục đã tồn tại!');
-            return redirect("/blog_category/add_blog_category");
-        }
-
         $category->name = $request->category_name;
         $category->slug = $request->category_slug;
         $category->save();
-        return redirect("/blog_category");
+        return redirect()->back()->with('message', 'Đã cập nhật danh mục thành công!');
     }
 
     public function tag(blog_tag $tag)

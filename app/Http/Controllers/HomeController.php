@@ -21,9 +21,8 @@ class HomeController extends Controller
     }
 
     public function blog(){
-        $available_posts = blog_post::where("status", 1);
-        $posts = $available_posts->paginate(2);
-        $lastest_posts = $available_posts->orderBy('created_at', 'DESC')->take(4)->get();
+        $posts = blog_post::where("status", 1)->orderBy('created_at', 'DESC')->paginate(2);
+        $lastest_posts = blog_post::where("status", 1)->orderBy('created_at', 'DESC')->take(4)->get();
         $tags = blog_tag::all();
         $categories = blog_category::all();
         return view('blog.blog', compact('posts', 'tags', 'lastest_posts', 'categories'));
