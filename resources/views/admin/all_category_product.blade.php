@@ -47,7 +47,7 @@
                                         @endif
                                     </td>
                                     <td>{{ $cate_pro->slug_category_product }}</td>
-                                    <td>{{$cate_pro->category_status==0 ? 'Hiển thị': 'Ẩn'}}</td>
+                                    <td>{{$cate_pro->category_status==1 ? 'Hiển thị': 'Ẩn'}}</td>
                                     <td>
                                         <a href="{{URL::to('/edit-category-product/'.$cate_pro->category_id)}}">
                                             <i style="font-size: 20px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>

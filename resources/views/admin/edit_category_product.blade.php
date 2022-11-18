@@ -25,24 +25,19 @@
                             <textarea type="password" style="resize: none;" rows="5" name="category_product_desc" class="form-control" id="exampleInputPassword1">{{ $edit_value->category_desc }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Trạng thái</label>
+                            <label for="exampleInputPassword1">Thuộc danh mục</label>
                             <select name="category_parent" class="form-control input-sm m-bot15">
-                                @if($edit_value->category_parent_id==0)
-                                <option value="0">---Danh muc cha---</option>
-                                @else
-                                <option value="0">{{ $edit_value->category_name }}</option>
-                                <option value="0">---Danh muc cha---</option>
-                                @endif
+                                <option value="0" {{$edit_value->category_parent_id==0? 'selected' : ''}}>---Danh muc cha---</option>
                                 @foreach($category as $key => $val)
-                                <option value="{{$val->category_id}}">{{$val->category_name}}</option>
+                                <option value="{{$val->category_id}}" {{$edit_value->category_parent_id==$val->category_id? 'selected' : ''}}>{{$val->category_name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Trạng thái</label>
                             <select name="category_product_status" class="form-control input-sm m-bot15">
-                                <option value="1" {{$edit_value->category_status == 1? 'selected': ''}}>Ẩn</option>
-                                <option value="0" {{$edit_value->category_status == 0? 'selected': ''}}>Hiển thị</option>
+                                <option value="0" {{$edit_value->category_status == 0? 'selected': ''}}>Ẩn</option>
+                                <option value="1" {{$edit_value->category_status == 1? 'selected': ''}}>Hiển thị</option>
                             </select>
                         </div>
                         <button type="submit" name="update_category_product" class="btn btn-info">Cập nhật</button>

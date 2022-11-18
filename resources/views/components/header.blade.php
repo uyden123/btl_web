@@ -91,8 +91,8 @@
                             </button>
                             <div class="main_menu_inner collapse navbar-collapse" id="main_menu_dropdown">
                                 <ul class="main_menu_list ul_li text-uppercase ">
-                                    @foreach(App\Category::with('categoryChildren')->where('category_parent_id',0)->get() as $item)
-                                        <li class="dropdown {{(request()->is('cafenod*')) ? 'active' : ''}}">
+                                @foreach(App\Category::with('categoryChildren')->where('category_parent_id',0)->where('category_status',1)->get() as $item)
+                                        <li class="dropdown">
                                             @if($item->categoryChildren->count()>0)
                                                 <a class="nav-link" href="{{URL::to('/'.$item->slug_category_product)}}" role="button" data-bs-toggle="dropdown">
                                                     {{ $item->category_name }}

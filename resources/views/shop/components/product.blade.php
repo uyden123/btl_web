@@ -14,7 +14,7 @@
                                     <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
                                     <label class="form-check-label">Dưới 500K</label>
                                 </div>
-                                <div class="form-check d-inline-flex me-3" >
+                                <div class="form-check d-inline-flex me-3">
                                     <input class="form-check-input me-3" type="checkbox" id="check2" name="option1" value="something">
                                     <label class="form-check-label">Từ 500K - 1 triệu</label>
                                 </div>
@@ -49,6 +49,7 @@
                     <div class="tab-pane fade show mt-none-30 active" id="shop-tab-1" role="tabpanel" aria-labelledby="shop-tab-1-tab">
                         <div class="row">
                             @foreach($category_by_id as $key => $product)
+                            @if($product->product_status==1)
                             <div class="col-xl-3 col-lg-6 col-md-6 mt-30">
                                 <div class="pp__item pp__item--2 active text-center pt-20 pb-20">
                                     <div class="pp__thumb pp__thumb--2 mt-35">
@@ -72,6 +73,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                             @endforeach
                         </div>
                     </div>
@@ -93,4 +95,3 @@
 </div>
 <!-- blog area end -->
 @endsection
-
