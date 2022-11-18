@@ -69,11 +69,7 @@ class BlogController extends Controller
 
         $post = new blog_post;
         if ($request->hasFile('blog_thumbnails')) {
-            $imageName = $request->file('blog_thumbnails');
-            $get_name_image = $imageName->getClientOriginalName();
-            $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image . rand(0, 99) . '.' . $imageName->getClientOriginalExtension();
-            $path = $imageName->move('public/upload/blog_thumbnails', $new_image);
+            $path = $request->blog_thumbnails;
             $post->image = $path;
         }
         $post->title = $request->blog_title;
@@ -144,11 +140,7 @@ class BlogController extends Controller
 
         $post = blog_post::where('id', $id)->first();
         if ($request->hasFile('blog_thumbnails')) {
-            $imageName = $request->file('blog_thumbnails');
-            $get_name_image = $imageName->getClientOriginalName();
-            $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image . rand(0, 99) . '.' . $imageName->getClientOriginalExtension();
-            $path = $imageName->move('public/upload/blog_thumbnails', $new_image);
+            $path = $request->blog_thumbnails->store('public');
             $post->image = $path;
         }
         $post->title = $request->blog_title;

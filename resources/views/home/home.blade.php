@@ -766,7 +766,7 @@
                 <div class="col-md-3 col-sm-6 col-sm-6">
                     <div class="blog_grid wow fadeInUp" data-wow-delay=".1s">
                         <a class="item_image" href="blog_details.html">
-                            <img src="{{asset($post->image)}}" alt="image_not_found">
+                            <img src="{{asset('/storage/app/'.$post->image)}}" alt="image_not_found">
                         </a>
                         <div class="item_content">
                             <h3 class="item_title text-uppercase">

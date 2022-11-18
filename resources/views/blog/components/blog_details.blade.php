@@ -27,7 +27,7 @@
                         <div class="blog__wrapper blog__wrapper--single">
                             <article class="blog__post blog__post--single format format-image">
                                 <div class="thumb">
-                                    <img src="{{asset($post->image)}}" alt="">
+                                    <img src="{{asset('/storage/app/'.$post->image)}}" alt="">
                                 </div>
                                 <h2 class="title">{{$post->title}}</h2>
                                 <ul class="meta mt-20 list-unstyled d-flex align-items-center">
@@ -61,7 +61,7 @@
                                 <h2 class="title">Tìm kiếm</h2>
                                 <form action="{{URL::to('/blog')}}" class="search-widget">
                                     <input type="search" name="search" id="search" placeholder="Tìm kiếm bài viết">
-                                    <button type="submit" class="btn"><i class="fal fa-search"> Tìm kiếm</i></button>
+                                    <button type="submit"><i class="fal fa-search"> Tìm kiếm</i></button>
                                 </form>
                             </div>
                             <div class="widget mt-30">
@@ -79,7 +79,7 @@
                                     @foreach($lastest_posts as $post)
                                     <div class="item d-flex align-items-center">
                                         <div class="thumb">
-                                            <img src="{{asset($post->image)}}" alt="">
+                                            <img src="{{asset('/storage/app/'.$post->image)}}" alt="">
                                         </div>
                                         <div class="content">
                                             <h5 class="rp-title border-effect">
