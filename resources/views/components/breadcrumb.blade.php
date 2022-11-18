@@ -7,9 +7,10 @@
                     <li><a href="{{URL::to('/trang-chu')}}"><i class="fas fa-home"></i>trang chủ</a></li>
 
                     <!-- blog_breadcrumb_start  -->
-                    @if(!isset($category) && !isset($tag) && !isset($post) && !isset($search))
+                    {{--@if(!isset($category) && !isset($tag) && !isset($post) && !isset($search))
                     <li>Tin tức</li>
-                    @elseif(isset($category))
+                    @else
+                        @if(isset($category))
                     <li><a href="{{URL::to('/blog')}}">Tin tức</a></li>
                     <li>{{$category->name}}</li>
                     @elseif(isset($tag))
@@ -23,8 +24,9 @@
                     <li><a href="{{URL::to('/blog')}}">Tin tức</a></li>
                     <li>{{'Search: "'.$search.'"'}}</li>
                     @endif
+                    @endif--}}
                     <!-- blog_breadcrumb_end  -->
-                    
+
                 </ul>
             </div>
         </section>
