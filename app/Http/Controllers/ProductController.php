@@ -26,11 +26,18 @@ class ProductController extends Controller
     }
 
     public function save_product(Request $request){
+        $this->validate($request, [
+            "product_name" => "required|unique:tbl_product,product_name",
+            "slug_product" => "required|unique:tbl_product,slug_product",
+            "product_price" => "required",
+            "product_desc" => "required",
+            "product_content" => "required",
+        ]);
+
         $data=array();
         $data['product_name'] = $request->product_name;
         $data['slug_product'] = $request->slug_product;
         $data['product_price'] = $request->product_price;
-        $data['product_price_old'] = $request->product_price_old;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $data['category_id'] = $request->cate_product;
@@ -43,25 +50,10 @@ class ProductController extends Controller
             $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
             $get_image->move('public/upload/product', $new_image);
             $data['product_image'] = $new_image;
-            DB::table('tbl_product')->insert($data);
-            Session::put('message','Ok nha');
-            return Redirect::to('all-product');
         }
-        $data['product_image'] = '';
+        else $data['product_image'] = '';
         DB::table('tbl_product')->insert($data);
-        Session::put('message','Ok nha');
-        return Redirect::to('all-product');
-    }
-
-    public function unactive_product($product_id){
-        DB::table('tbl_product')->where('product_id', $product_id)->update(['product_status'=>1]);
-        Session::put('message','Ok nha');
-        return Redirect::to('all-product');
-    }
-
-    public function active_product($product_id){
-        DB::table('tbl_product')->where('product_id', $product_id)->update(['product_status'=>0]);
-        Session::put('message','Ok nha');
+        Session::flash('message','Thêm sản phẩm thành công!');
         return Redirect::to('all-product');
     }
 
@@ -73,11 +65,17 @@ class ProductController extends Controller
     }
 
     public function update_product(Request $request,$product_id){
+        $this->validate($request, [
+            "product_name" => "required",
+            "slug_product" => "required",
+            "product_price" => "required",
+            "product_desc" => "required",
+            "product_content" => "required",
+        ]);
         $data=array();
         $data['product_name'] = $request->product_name;
         $data['slug_product'] = $request->slug_product;
         $data['product_price'] = $request->product_price;
-        $data['product_price_old'] = $request->product_price_old;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $data['category_id'] = $request->cate_product;
@@ -90,19 +88,15 @@ class ProductController extends Controller
             $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
             $get_image->move('public/upload/product', $new_image);
             $data['product_image'] = $new_image;
-            DB::table('tbl_product')->where('product_id',$product_id)->update($data);
-            Session::put('message','Ok nha');
-            return Redirect::to('all-product');
         }
 
         DB::table('tbl_product')->where('product_id',$product_id)->update($data);
-        Session::put('message','Ok nha');
         return Redirect::to('all-product');
     }
 
     public function delete_product($product_id){
         DB::table('tbl_product')->where('product_id',$product_id)->delete();
-        Session::put('message','Ok nha');
+        Session::flash('message','Xoá sản phẩm thành công!');
         return Redirect::to('all-product');
     }
 

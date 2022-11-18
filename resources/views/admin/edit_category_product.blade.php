@@ -7,9 +7,9 @@
                 Cập nhật danh mục sản phẩm
             </header>
             <div class="panel-body">
-                @include('components.errors')
-                @foreach($edit_category_product as $key => $edit_value)
                 <div class="position-center">
+                    @include('components.errors')
+                    @foreach($edit_category_product as $key => $edit_value)
                     <form action="{{ URL::to('/update-category-product/'.$edit_value->category_id) }}" method="post" role="form">
                         @csrf
                         <div class="form-group">
@@ -42,8 +42,8 @@
                         </div>
                         <button type="submit" name="update_category_product" class="btn btn-info">Cập nhật</button>
                     </form>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
         </section>
 

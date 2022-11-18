@@ -765,7 +765,7 @@
                 @foreach($lastest_posts as $post)
                 <div class="col-md-3 col-sm-6 col-sm-6">
                     <div class="blog_grid wow fadeInUp" data-wow-delay=".1s">
-                        <a class="item_image" href="blog_details.html">
+                        <a class="item_image" href="{{URL::to('/blog/'.$post->slug)}}">
                             <img src="{{asset('public'.Storage::url($post->image))}}" alt="image_not_found">
                         </a>
                         <div class="item_content">

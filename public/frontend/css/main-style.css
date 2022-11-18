@@ -1145,7 +1145,6 @@ h6 {
     display: block;
     overflow: hidden;
     border-radius: 5px;
-    max-height: 150px;
     position: relative;
 }
 
@@ -1157,6 +1156,8 @@ h6 {
 
 .blog_grid .item_image img,
 .products .img_product img {
+    height: 150px;
+    object-fit: fill;
     width: 100%;
     display: block;
     transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
