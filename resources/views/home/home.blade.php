@@ -761,75 +761,25 @@
                 <h3 class="big_title wow fadeInUp" data-wow-delay=".2s">Tin mới nhất trong ngày</h3>
             </div>
 
-            <div class="row justify-content-center">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="row equal justify-content-center">
+                @foreach($lastest_posts as $post)
+                <div class="col-md-3 col-sm-6 col-sm-6">
                     <div class="blog_grid wow fadeInUp" data-wow-delay=".1s">
                         <a class="item_image" href="blog_details.html">
-                            <img src="{{asset('public/frontend/images/blog/img_01.png')}}" alt="image_not_found">
+                            <img src="{{asset('public'.Storage::url($post->image))}}" alt="image_not_found">
                         </a>
                         <div class="item_content">
                             <h3 class="item_title text-uppercase">
-                                <a href="blog_details.html">tách cafe - cuộc sống khác</a>
+                                <a href="{{URL::to('/blog/'.$post->slug)}}">{{$post->title}}</a>
                             </h3>
                             <p>
-                                Cuộc sống luôn thay đổi, con người cũng bị cuốn vào những guồng quay bất tận của nó...
+                                {{$post->description}}
                             </p>
-                            <a class="btn_text text-uppercase" href="blog_details.html"><span>Đọc thêm</span> <i class="far fa-angle-double-right"></i></a>
+                            <a class="btn_text text-uppercase" href="{{URL::to('/blog/'.$post->slug)}}"><span>Đọc thêm</span> <i class="far fa-angle-double-right"></i></a>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="blog_grid wow fadeInUp" data-wow-delay=".2s">
-                        <a class="item_image" href="blog_details.html">
-                            <img src="{{asset('public/frontend/images/blog/img_02.png')}}" alt="image_not_found">
-                        </a>
-                        <div class="item_content">
-                            <h3 class="item_title text-uppercase">
-                                <a href="blog_details.html">công thức cho tách cafe ngon</a>
-                            </h3>
-                            <p>
-                                Để có một tách cafe ngon ngoài lựa chọn nguyên liệu chất lượng thì cách pha chế...
-                            </p>
-                            <a class="btn_text text-uppercase" href="blog_details.html"><span>Read More</span> <i class="far fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="blog_grid wow fadeInUp" data-wow-delay=".3s">
-                        <a class="item_image" href="blog_details.html">
-                            <img src="{{asset('public/frontend/images/blog/img_03.png')}}" alt="image_not_found">
-                        </a>
-                        <div class="item_content">
-                            <h3 class="item_title text-uppercase">
-                                <a href="blog_details.html">cách chọn cafe cho bạn</a>
-                            </h3>
-                            <p>
-                                Không phải ai cũng biết cách chọn cafe phù hợp với chính bảnt thân mình. Việc chọn đúng cafe...
-                            </p>
-                            <a class="btn_text text-uppercase" href="blog_details.html"><span>đọc thêm</span> <i class="far fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="blog_grid wow fadeInUp" data-wow-delay=".1s">
-                        <a class="item_image" href="blog_details.html">
-                            <img src="{{asset('public/frontend/images/blog/img_01.png')}}" alt="image_not_found">
-                        </a>
-                        <div class="item_content">
-                            <h3 class="item_title text-uppercase">
-                                <a href="blog_details.html">cách nhận biết cafe giả</a>
-                            </h3>
-                            <p>
-                                Hiện nay trên thị trường đang trôi nổi nhiều cafe giả mạo thương hiệu của NOD quý khách hàng...
-                            </p>
-                            <a class="btn_text text-uppercase" href="blog_details.html"><span>đọc thêm</span> <i class="far fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </section>

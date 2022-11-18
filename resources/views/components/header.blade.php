@@ -78,7 +78,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-6 col-6">
                         <div class="brand_logo">
-                            <a class="brand_link ms-3" href="index.html">
+                            <a class="brand_link ms-3" href="{{URL::to('/trang-chu')}}">
                                 <img src="{{asset('public/frontend/images/logo/logo_white_1x.png')}}"
                                      srcset="{{asset('public/frontend/images/logo/logo_white_2x.png')}} 2x" alt="LOGO CAFENOD">
                             </a>

@@ -8,4 +8,4 @@
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/animate.css')}}">
 
 <!-- custom - css include -->
-<link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/main-style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/main-style.css?v=').time()}}">

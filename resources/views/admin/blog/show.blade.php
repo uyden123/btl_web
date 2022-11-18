@@ -16,7 +16,7 @@
     <div class="row panel-body">
       <div class="col-md-12">
         <div class="box-header" style="margin: 1rem .5rem 1rem 0; text-align:center;">
-          <a class=" btn btn-success d-flex" href="{{ URL::to('/blog_post/add_post')}}">Thêm bài mới</a>
+          <a class=" btn btn-success d-flex" href="{{ URL::to('/admin/blog_post/add_post')}}">Thêm bài mới</a>
         </div>
         <div class="box" style="border-top: 1px solid #000; padding-top: 1rem">
           <div class="box-body">
@@ -26,10 +26,10 @@
                   <th>No.</th>
                   <th>Tiêu đề</th>
                   <th>Mô tả</th>
-                  <th>Slug</th>
-                  <th>Nội dung</th>
+                  <th>Viết ngày</th>
+                  <th>Cập nhật ngày</th>
                   <th>Công khai</th>
-                  <th>Sửa</th>
+                  <th>Cập nhật</th>
                   <th>Xoá</th>
                 </tr>
               </thead>
@@ -39,16 +39,16 @@
                   <td>{{$loop->index + 1}}</td>
                   <td>{{$post->title}}</td>
                   <td>{{$post->description}}</td>
-                  <td>{{$post->slug}}</td>
-                  <td>{{$post->content}}</td>
-                  <td>{{$post->status}}</td>
+                  <td>{{$post->created_at}}</td>
+                  <td>{{$post->updated_at}}</td>
+                  <td>{{$post->status ? 'Công khai': 'Không công khai'}}</td>
                   <td>
-                    <a href="{{URL::to('/blog_post/'.$post->id.'/edit')}}">
+                    <a href="{{URL::to('/admin/blog_post/'.$post->id.'/edit')}}">
                       <i style="font-size: 20px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
                   </td>
                   <td>
-                    <a  onclick="return confirm('Có chắc muốn xoá chưa?')" href="{{URL::to('/blog_post/'.$post->id.'/delete')}}">
+                    <a  onclick="return confirm('Có chắc muốn xoá chưa?')" href="{{URL::to('/admin/blog_post/'.$post->id.'/delete')}}">
                       <i style="font-size: 20px;" class="fa fa-trash" aria-hidden="false"></i>
                     </a>
                   </td>

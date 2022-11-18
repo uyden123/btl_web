@@ -19,20 +19,25 @@
     <!--body-main-section-->
     <main>
         @include('components.breadcrumb')
-
         <!-- blog area start -->
         <div class="blog-area pt-120 pb-105">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 col-lg-8">
                         <div class="blog__wrapper mt-none-30">
+                            @if(isset($category))
+                            @php ($posts = $category->posts())
+                            @endif
+                            @if(isset($tag))
+                            @php ($posts = $tag->posts())
+                            @endif
                             @if($posts->count() == 0)
                             <h2 class="text-center title border-effect mb-10 wow fadeInUp" data-wow-delay=".1s">Không có bài viết nào!</h2>
                             @endif
                             @foreach($posts as $post)
                             <article class="blog__post mt-30 wow fadeInUp" data-wow-delay=".1s">
                                 <div class="thumb">
-                                    <img src="{{asset($post->image)}}" alt="">
+                                    <img src="{{asset('public'.Storage::url($post->image))}}" alt="">
                                 </div>
                                 <ul class="meta mt-20 list-unstyled d-flex align-items-center">
                                     <i class="fal fa-file"></i>
@@ -42,12 +47,12 @@
                                     <li><a href="#0"><i class="fal fa-calendar-alt"></i>{{$post->created_at->diffForHumans()}}</a></li>
                                 </ul>
                                 <div class="content mt-10">
-                                    <h2 class="title border-effect mb-10"><a href="{{URL::to('/blog-details/'.$post->slug)}}">{{$post->title}}</a></h2>
+                                    <h2 class="title border-effect mb-10"><a href="{{URL::to('/blog/'.$post->slug)}}">{{$post->title}}</a></h2>
                                     <p>{{$post->description}}
                                     </p>
                                 </div>
                                 <div class="bottom mt-35 d-flex align-items-center">
-                                    <a href="{{URL::to('/blog-details/'.$post->slug)}}" class="site-btn">đọc thêm</a>
+                                    <a href="{{URL::to('/blog/'.$post->slug)}}" class="site-btn">đọc thêm</a>
                                 </div>
                             </article>
                             @endforeach
@@ -61,9 +66,9 @@
                         <div class="blog__sidebar mt-none-30 wow fadeInUp" data-wow-delay=".1s">
                             <div class="widget mt-30">
                                 <h2 class="title">Tìm kiếm</h2>
-                                <form action="{{URL::to('/blog/search')}}" class="search-widget">
+                                <form action="{{URL::to('/blog')}}" class="search-widget">
                                     <input type="search" name="search" id="search" placeholder="Tìm kiếm bài viết">
-                                    <button type="submit" class="btn"><i class="fal fa-search"> Tìm kiếm</i></button>
+                                    <button type="submit"><i class="fal fa-search"> Tìm kiếm</i></button>
                                 </form>
                             </div>
                             <div class="widget mt-30">
@@ -81,11 +86,11 @@
                                     @foreach($lastest_posts as $post)
                                     <div class="item d-flex align-items-center">
                                         <div class="thumb">
-                                            <img src="{{asset($post->image)}}" alt="">
+                                            <img src="{{asset('public'.Storage::url($post->image))}}" alt="">
                                         </div>
                                         <div class="content">
                                             <h5 class="rp-title border-effect">
-                                                <a href="{{URL::to('/blog-details/'.$post->slug)}}">
+                                                <a href="{{URL::to('/blog/'.$post->slug)}}">
                                                     {{$post->title}}
                                                 </a>
                                             </h5>

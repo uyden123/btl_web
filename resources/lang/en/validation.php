@@ -95,7 +95,7 @@ return [
     'numeric' => 'The :attribute must be a number.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    'required' => ':attribute là trường phải nhập.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
     'required_with' => 'The :attribute field is required when :values is present.',
@@ -112,7 +112,7 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid zone.',
-    'unique' => 'The :attribute has already been taken.',
+    'unique' => ':attribute đã được sử dụng.',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
@@ -131,6 +131,7 @@ return [
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
+            'tag slug' => 'Slug'
         ],
     ],
 
@@ -145,6 +146,16 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        "blog_title" => "Tiêu đề bài viết",
+        "blog_description" => "Mô tả",
+        "blog_slug" => "Slug",
+        "blog_thumbnails" => "Ảnh thumbnails",
+        "blog_content" => "Nội dung bài viết",
+        'tag_slug' => 'Slug',
+        'tag_name' => 'Tên tag',
+        'category_slug' => 'Slug',
+        'category_name' => 'Tên danh mục'
+    ],
 
 ];
