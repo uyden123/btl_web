@@ -19,6 +19,8 @@ Route::get('/', 'HomeController@index');
 Route::get('/trang-chu', 'HomeController@index');
 Route::get('/cua-hang-cafe', 'HomeController@index1');
 Route::get('/blog', 'HomeController@blog');
+Route::get('/lien-he', 'HomeController@contact');
+Route::get('/gioi-thieu', 'HomeController@about');
 //danh muc san pham trang chu
 Route::get('/cua-hang-cafe/{category_id}', 'CategoryProductController@show_category_home');
 Route::get('/thuong-hieu-san-pham/{brand_id}', 'BrandProductController@show_brand_home');

@@ -29,5 +29,11 @@ class HomeController extends Controller
         return view('blog.blog', compact('posts', 'tags', 'lastest_posts', 'categories'));
     }
 
-    
+    public function contact(){
+        return view('contact.contact');
+    }
+
+    public function about(){
+        return view('about.about_us');
+    }
 }

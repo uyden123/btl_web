@@ -31,6 +31,12 @@ class CategoryProductController extends Controller
     }
 
     public function save_category_product(Request $request){
+        $this->validate($request, [
+            "category_product_name" => "required|unique:tbl_category_product,category_name",
+            "category_product_desc" => "required|unique:tbl_category_product,category_desc",
+            "slug_category_product" => "required|unique:tbl_category_product,slug_category_product",
+        ]);
+
         $data=array();
         $data['category_name'] = $request->category_product_name;
         $data['slug_category_product'] = $request->slug_category_product;
@@ -39,20 +45,8 @@ class CategoryProductController extends Controller
         $data['category_status'] = $request->category_product_status;
 
         DB::table('tbl_category_product')->insert($data);
-        Session::put('message','Ok nha');
+        Session::flash('message','Thêm danh mục sản phẩm thành công!');
         return Redirect::to('add-category-product');
-    }
-
-    public function unactive_category_product($category_product_id){
-        DB::table('tbl_category_product')->where('category_id', $category_product_id)->update(['category_status'=>1]);
-        Session::put('message','Ok nha');
-        return Redirect::to('all-category-product');
-    }
-
-    public function active_category_product($category_product_id){
-        DB::table('tbl_category_product')->where('category_id', $category_product_id)->update(['category_status'=>0]);
-        Session::put('message','Ok nha');
-        return Redirect::to('all-category-product');
     }
 
     public function edit_category_product($category_product_id){
@@ -64,20 +58,25 @@ class CategoryProductController extends Controller
     }
 
     public function update_category_product(Request $request,$category_product_id){
+        $this->validate($request, [
+            "category_product_name" => "required",
+            "category_product_desc" => "required",
+            "slug_category_product" => "required",
+        ]);
         $data=array();
         $data['category_name'] = $request->category_product_name;
         $data['slug_category_product'] = $request->slug_category_product;
         $data['category_desc'] = $request->category_product_desc;
         $data['category_parent_id'] = $request->category_parent;
+        $data['category_status'] = $request->category_product_status;
 
         DB::table('tbl_category_product')->where('category_id',$category_product_id)->update($data);
-        Session::put('message','Ok nha');
         return Redirect::to('all-category-product');
     }
 
     public function delete_category_product($category_product_id){
         DB::table('tbl_category_product')->where('category_id',$category_product_id)->delete();
-        Session::put('message','Ok nha');
+        Session::flash('message','Xoá thành công');
         return Redirect::to('all-category-product');
     }
 
