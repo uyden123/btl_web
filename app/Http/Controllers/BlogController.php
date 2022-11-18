@@ -85,7 +85,7 @@ class BlogController extends Controller
         $post->tags()->sync($request->tags);
         $post->categories()->sync($request->categories);
         Session::flash('message', 'Đã thêm bài viết thành công!');
-        return redirect("/admin/blog_post/add_post");
+        return redirect()->back();
     }
 
     public function add_blog_tag(Request $request)
@@ -100,7 +100,7 @@ class BlogController extends Controller
         $tag->slug = $request->tag_slug;
         $tag->save();
         Session::flash('message', 'Đã thêm TAG thành công!');
-        return redirect("/admin/blog_tag/add_blog_tag");
+        return redirect()->back();
     }
 
     public function add_blog_category(Request $request)
@@ -115,7 +115,7 @@ class BlogController extends Controller
         $tag->slug = $request->category_slug;
         $tag->save();
         Session::flash('message', 'Đã thêm danh mục thành công!');
-        return redirect("/admin/blog_category/add_blog_category");
+        return redirect()->back();
     }
 
     public function delete_blog_post($id)

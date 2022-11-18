@@ -1,5 +1,5 @@
 @if ($paginator->lastPage() > 1)
-<ul class=>
+<ul>
     <li>
         <a href="{{ ($paginator->currentPage() == 1) ? $paginator->url($paginator->lastPage()) : $paginator->url($paginator->currentPage()-1) }}">
             <span><i class="far fa-angle-double-left"></i></span>

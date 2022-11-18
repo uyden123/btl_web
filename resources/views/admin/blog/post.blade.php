@@ -25,15 +25,15 @@
                         @csrf
                         <div class="form-group">
                             <label for="blog_title">Tiêu đề bài viết</label>
-                            <input type="text" name="blog_title" class="form-control" id="blog_title" placeholder="Nhập tiêu đề">
+                            <input type="text" name="blog_title" class="form-control" id="blog_title" placeholder="Nhập tiêu đề" value="{{old('blog_title')}}">
                         </div>
                         <div class="form-group">
                             <label for="blog_description">Mô tả</label>
-                            <input type="text" name="blog_description" class="form-control" id="blog_description" placeholder="Nhập mô tả">
+                            <input type="text" name="blog_description" class="form-control" id="blog_description" placeholder="Nhập mô tả" value="{{old('blog_description')}}">
                         </div>
                         <div class="form-group">
                             <label for="blog_slug">Slug</label>
-                            <input type="text" name="blog_slug" class="form-control" id="blog_slug" placeholder="Nhập slug">
+                            <input type="text" name="blog_slug" class="form-control" id="blog_slug" placeholder="Nhập slug" value="{{old('blog_slug')}}">
                         </div>
                         <div class="form-group">
                             <label for="thumbnails">Ảnh Thumbnails</label>
@@ -41,14 +41,14 @@
                         </div>
                         <div class="form-group">
                             <label for="editor1">Nội dung bài viết</label>
-                            <textarea id="editor1" class="textarea" name="blog_content" placeholder="Nhập nội dung bài viết" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                            <textarea id="editor1" class="textarea" name="blog_content" placeholder="Nhập nội dung bài viết" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('blog_content')}}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label>Tags</label>
                             <select class="form-control select2 select2-hidden-accessible" name="tags[]" data-placeholder="Chọn Tag" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                 @foreach($tags as $tag)
-                                <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                <option value="{{$tag->id}}" {{in_array($tag->id, old("tags") ?: []) ? "selected": ""}}>{{$tag->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -57,14 +57,14 @@
                             <label>Danh mục</label>
                             <select class="form-control select2 select2-hidden-accessible" name="categories[]" data-placeholder="Chọn danh mục" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                 @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}" {{in_array($category->id, old("categories") ?: []) ? "selected": ""}}>{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
-                                <input type="checkbox" name='status' class="pull-left" value="1">
+                                <input type="checkbox" name='status' class="pull-left" value="1" @if(old('status')) checked @endif>
                                 Công khai
                             </label>
                         </div>

@@ -124,6 +124,7 @@
 
 .blog__post .meta {
     flex-wrap: wrap;
+    margin: 10px 0 25px 0;
 }
 
 .blog__post .meta li {
@@ -192,30 +193,36 @@
     }
 }
 
-.blog__post .content .title {
-    font-size: 30px;
-    text-transform: uppercase;
+.blog__post .title {
+    margin-top: 10px;
 }
 
 @media (max-width: 500px) {
-    .blog__post .content .title {
+    .blog__post .title {
         font-size: 28px;
     }
 }
 
-.blog__post .content .title a {
-    text-decoration: none;
-    color: #010103;
+.blog__post .content p, 
+.blog__post .content ol{
+    text-align: justify;
 }
 
-.blog__post .content p {
-    font-size: 18px;
-    color: #6c6c6c;
+.blog__post .content a:has(img){
+    width: 100%;
 }
 
-.blog__post .content h3 {
-    font-size: 30px;
-    margin-bottom: 10px;
+.blog__post .content img{
+    display: block;
+    margin: 0 auto;
+}
+
+blockquote {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .blog__post .bottom {
@@ -406,6 +413,7 @@
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
+    color: #000;
 }
 
 .cafena-pagination ul li .current {
@@ -426,6 +434,10 @@
     padding: 30px;
     padding-bottom: 35px;
     border-radius: 10px;
+}
+
+.blog__sidebar .widget:has(form){
+    min-height: 200px;
 }
 
 .blog__sidebar .widget .title {
@@ -463,12 +475,25 @@
     opacity: 1;
 }
 
+.blog__sidebar .widget .search-widget{
+    position: relative;
+}
+
 .blog__sidebar .widget .search-widget button {
+    position: absolute;
     font-size: .9rem;
     margin-top: 1rem;
     padding: .7rem;
-    background-color: #c7a17a;
-    margin-left: 35%;
+    border: 1px solid #E2DFDD;
+    border-radius: 5px;
+    color: #6c6c6c;
+    bottom: -120%;
+    right: 0;
+}
+
+.blog__sidebar .widget .search-widget button:hover {
+    border-color: #000;
+    color: #000;
 }
 
 .cat-item {

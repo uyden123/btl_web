@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="{{asset('public/frontend/images/logo/favourite_icon.png')}}')}}">
 
     @include('components.css')
-    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/blog.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/blog.css?v=').time()}}">
 </head>
 
 <body>
@@ -29,14 +29,14 @@
                                 <div class="thumb">
                                     <img src="{{asset($post->image)}}" alt="">
                                 </div>
+                                <h2 class="title">{{$post->title}}</h2>
                                 <ul class="meta mt-20 list-unstyled d-flex align-items-center">
                                     <i class="fal fa-file"></i>
                                     @foreach($post->categories as $category)
                                     <li><a href="{{URL::to('/blog/category/'.$category->slug)}}">{{$category->name}}</a></li>
                                     @endforeach
-                                    <li><a href="#0"><i class="fal fa-calendar-alt"></i>{{$post->created_at}}</a></li>
+                                    <li><i class="fal fa-calendar-alt">  {{$post->created_at}}</i></li>
                                 </ul>
-                                <h2>{{$post->title}}</h2>
                                 <div class="content mt-10">
                                     {!!htmlspecialchars_decode($post->content)!!}
                                 </div>
