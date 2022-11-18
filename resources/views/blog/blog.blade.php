@@ -37,7 +37,7 @@
                             @foreach($posts as $post)
                             <article class="blog__post mt-30 wow fadeInUp" data-wow-delay=".1s">
                                 <div class="thumb">
-                                    <img src="{{asset('/storage/app/'.$post->image)}}" alt="">
+                                    <img src="{{asset('public'.Storage::url($post->image))}}" alt="">
                                 </div>
                                 <ul class="meta mt-20 list-unstyled d-flex align-items-center">
                                     <i class="fal fa-file"></i>
@@ -86,7 +86,7 @@
                                     @foreach($lastest_posts as $post)
                                     <div class="item d-flex align-items-center">
                                         <div class="thumb">
-                                            <img src="{{asset('/storage/app/'.$post->image)}}" alt="">
+                                            <img src="{{asset('public'.Storage::url($post->image))}}" alt="">
                                         </div>
                                         <div class="content">
                                             <h5 class="rp-title border-effect">
