@@ -18,7 +18,31 @@
 
     <!--body-main-section-->
     <main>
-        @include('components.breadcrumb')
+        <!-- breadcrumb_section - start
+        ================================================== -->
+        <section class="breadcrumb_section text-uppercase deco_wrap" style="background-image: url({{asset('public/frontend/images/breadcrumb/breadcrumb_bg_01.jpg')}});">
+            <div class="container">
+                <h1 class="page_title text-white wow fadeInUp" data-wow-delay=".1s">Tin tức</h1>
+                <ul class="breadcrumb_nav ul_li wow fadeInUp" data-wow-delay=".2s">
+                    <li><a href="{{URL::to('/trang-chu')}}"><i class="fas fa-home"></i>trang chủ</a></li>
+                    @if(!isset($category) && !isset($tag) && !isset($search))
+                    <li>Tin tức</li>
+                    @elseif(isset($category))
+                    <li><a href="{{URL::to('/blog')}}">Tin tức</a></li>
+                    <li>{{$category->name}}</li>
+                    @elseif(isset($tag))
+                    <li><a href="{{URL::to('/blog')}}">Tin tức</a></li>
+                    <li>{{$tag->name}}</li>
+                    @elseif(isset($search))
+                    <li><a href="{{URL::to('/blog')}}">Tin tức</a></li>
+                    <li>{{'Search: "'.$search.'"'}}</li>
+                    @endif
+                </ul>
+            </div>
+        </section>
+        <!-- breadcrumb_section - end
+        ================================================== -->
+
         <!-- blog area start -->
         <div class="blog-area pt-120 pb-105">
             <div class="container">
