@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Noi dung product</label>
-                                <textarea type="password" style="resize: none;" rows="5" name="product_content" class="form-control" id="exampleInputPassword1">{{$pro->product_content}}</textarea>
+                                <textarea id="editor3" type="password" style="resize: none;" rows="5" name="product_content" class="form-control" id="exampleInputPassword1">{{$pro->product_content}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Danh muc san pham</label>
@@ -75,4 +75,11 @@
 
         </div>
     </div>
+@endsection
+
+@section('footerSection')
+    <script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('editor3');
+    </script>
 @endsection

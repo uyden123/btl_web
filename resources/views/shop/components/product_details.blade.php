@@ -1,4 +1,8 @@
 @extends('shop.shop')
+
+@section('stylesheet')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+@endsection
 @section('content')
     @foreach($details_product as $key => $value)
     <!-- details_section - end
@@ -42,7 +46,7 @@
                                     <input name="product_id_hidden" type="hidden" value="{{$value->product_id}}" >
                                 </div>
                             </li>
-                            <li><button class="btn btn_secondary text-uppercase ms-2" type="submit">Thêm vào giỏ hàng</button></li>
+                            <li><button name="add-to-cart" class="btn btn_secondary text-uppercase ms-2 add-to-cart" type="submit">Thêm vào giỏ hàng</button></li>
                         </ul>
                         </form>
                         <div class="details_wishlist_btn">
@@ -89,4 +93,16 @@
     <!-- details_section - end
     ================================================== -->
     @endforeach
+@endsection
+
+@section('script')
+    <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.add-to-cart').click(function () {
+                swal("Hello world!");
+            });
+        });
+    </script>
 @endsection

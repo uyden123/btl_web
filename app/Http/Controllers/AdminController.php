@@ -7,6 +7,7 @@ use DB;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+use Cart;
 
 class AdminController extends Controller
 {

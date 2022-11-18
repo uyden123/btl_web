@@ -13,14 +13,24 @@ session_start();
 
 class CartController extends Controller
 {
+    public function add_to_cart(Request $request){
+        $data = $request->all();
+        $session_id = substr(md5(microtime()), rand(0,26),5);
+        $cart = Session::get('cart');
+        if ($cart==true){
+
+        }else{
+            $cart[] = array(
+
+            );
+        }
+    }
+
     public function save_cart(Request $request){
 
         $product_id = $request->product_id_hidden;
         $quantity = $request->qty;
         $product_info = DB::table('tbl_product')->where('product_id',$product_id)->first();
-
-        /*Cart::add('293ad', 'Product 1', 1, 9.99, 550);*/
-        /*Cart::destroy();*/
 
         $data['id'] = $product_info->product_id;
         $data['qty'] = $quantity;

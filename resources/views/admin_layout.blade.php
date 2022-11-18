@@ -131,9 +131,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>Tin tức</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="{{ URL::to('/admin/blog_post') }}">Danh sách bài viết</a></li>
-                            <li><a href="{{ URL::to('/admin/blog_tag') }}">Tag bài viết</a></li>
-                            <li><a href="{{ URL::to('/admin/blog_category') }}">Danh mục bài viết</a></li>
+                            <li><a href="{{ URL::to('/blog_post') }}">Danh sách bài viết</a></li>
+                            <li><a href="{{ URL::to('/blog_tag') }}">Tag bài viết</a></li>
+                            <li><a href="{{ URL::to('/blog_category') }}">Danh mục bài viết</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Đơn hàng</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{ URL::to('/manage-order') }}">Quản lý đơn hàng</a></li>
+                            <li><a href="{{ URL::to('/all-brand-product') }}">Liệt kê thương hiệu</a></li>
                         </ul>
                     </li>
                 </ul>

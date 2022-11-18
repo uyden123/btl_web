@@ -80,7 +80,6 @@
                             </label>
                         </div>
                         <button type="submit" name="add_blog" class="btn btn-info">Cập nhật</button>
-
                     </form>
                 </div>
             </div>

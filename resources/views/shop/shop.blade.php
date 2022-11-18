@@ -12,6 +12,7 @@
 
     @include('components.css')
     @yield('stylesheet')
+    @show
 
 </head>
 
@@ -34,7 +35,8 @@
 <!-- body_wrap - end -->
 
 @include('components.footer')
-
+@yield('script')
+@show
 
 </body>
 
