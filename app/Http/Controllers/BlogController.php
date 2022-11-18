@@ -214,22 +214,20 @@ class BlogController extends Controller
 
     public function tag(blog_tag $tag)
     {
-        $posts = $tag->posts();
         $available_posts = blog_post::where("status", 1);
         $lastest_posts = $available_posts->orderBy('created_at', 'DESC')->take(4)->get();
         $tags = blog_tag::all();
         $categories = blog_category::all();
-        return view('blog.blog', compact('posts', 'tags', 'lastest_posts', 'categories'));
+        return view('blog.blog', compact('tag', 'tags', 'lastest_posts', 'categories'));
     }
 
     public function category(blog_category $category)
     {
-        $posts = $category->posts();
         $available_posts = blog_post::where("status", 1);
         $lastest_posts = $available_posts->orderBy('created_at', 'DESC')->take(4)->get();
         $tags = blog_tag::all();
         $categories = blog_category::all();
-        return view('blog.blog', compact('posts', 'tags', 'lastest_posts', 'categories'));
+        return view('blog.blog', compact('category', 'tags', 'lastest_posts', 'categories'));
     }
 
     public function search(Request $request)
@@ -244,6 +242,6 @@ class BlogController extends Controller
         $lastest_posts = $available_posts->orderBy('created_at', 'DESC')->take(4)->get();
         $tags = blog_tag::all();
         $categories = blog_category::all();
-        return view('blog.blog', compact('posts', 'tags', 'lastest_posts', 'categories'));
+        return view('blog.blog', compact('posts', 'tags', 'lastest_posts', 'categories', 'search'));
     }
 }

@@ -17,7 +17,8 @@ class HomeController extends Controller
     public function index(){
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')->get();
         $all_product = DB::table('tbl_product')->where('product_status','0')->orderby('product_id','desc')->get();
-        return view('home.home')->with('category',$cate_product)->with('all_product',$all_product);
+        $lastest_posts = blog_post::where("status", 1)->orderBy('created_at', 'DESC')->take(4)->get();
+        return view('home.home')->with('category',$cate_product)->with('all_product',$all_product)->with('lastest_posts', $lastest_posts);
     }
 
     public function blog(){

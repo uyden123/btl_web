@@ -19,13 +19,18 @@
     <!--body-main-section-->
     <main>
         @include('components.breadcrumb')
-
         <!-- blog area start -->
         <div class="blog-area pt-120 pb-105">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 col-lg-8">
                         <div class="blog__wrapper mt-none-30">
+                            @if(isset($category))
+                            @php ($posts = $category->posts())
+                            @endif
+                            @if(isset($tag))
+                            @php ($posts = $tag->posts())
+                            @endif
                             @if($posts->count() == 0)
                             <h2 class="text-center title border-effect mb-10 wow fadeInUp" data-wow-delay=".1s">Không có bài viết nào!</h2>
                             @endif

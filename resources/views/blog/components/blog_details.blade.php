@@ -19,7 +19,6 @@
     <!--body-main-section-->
     <main>
         @include('components.breadcrumb')
-
         <!-- blog area start -->
         <div class="blog-area pt-120 pb-105">
             <div class="container">
