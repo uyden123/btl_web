@@ -353,8 +353,6 @@
             "time": "2022-02-28T11:07:21+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "dompdf/dompdf",
             "version": "v1.2.2",
             "source": {
@@ -424,7 +422,6 @@
             "time": "2022-04-27T13:50:54+00:00"
         },
         {
->>>>>>> vinh2
             "name": "dragonmantank/cron-expression",
             "version": "v2.3.1",
             "source": {
