@@ -25,8 +25,7 @@
 
     <!--body-main-section-->
     <main>
-        @include('components.breadcrumb')
-
+        
         @yield('content')
     </main>
     <!--body-main-section-->

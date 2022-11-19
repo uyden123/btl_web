@@ -19,15 +19,19 @@
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                <input type="text" name="product_name" class="form-control" id="exampleInputEmail1" placeholder="Tên product">
+                                <input type="text" name="product_name" class="form-control" id="exampleInputEmail1" placeholder="tên product">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Slug sản phẩm</label>
-                                <input type="text" name="slug_product" class="form-control" id="exampleInputEmail1" placeholder="Tên product">
+                                <input type="text" name="slug_product" class="form-control" id="exampleInputEmail1" placeholder="slug product">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Giá sản phẩm</label>
-                                <input type="text" name="product_price" class="form-control" id="exampleInputEmail1" placeholder="Tên product">
+                                <input type="text" name="product_price" class="form-control" id="exampleInputEmail1" placeholder="giá product">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Giá sản phẩm cũ</label>
+                                <input type="text" name="product_price_old" class="form-control" id="exampleInputEmail1" placeholder="giá product">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên sản phẩm</label>

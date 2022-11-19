@@ -38,6 +38,7 @@ class ProductController extends Controller
         $data['product_name'] = $request->product_name;
         $data['slug_product'] = $request->slug_product;
         $data['product_price'] = $request->product_price;
+        $data['product_price_old'] = $request->product_price_old;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $data['category_id'] = $request->cate_product;
@@ -76,6 +77,7 @@ class ProductController extends Controller
         $data['product_name'] = $request->product_name;
         $data['slug_product'] = $request->slug_product;
         $data['product_price'] = $request->product_price;
+        $data['product_price_old'] = $request->product_price_old;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $data['category_id'] = $request->cate_product;

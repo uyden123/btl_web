@@ -21,8 +21,12 @@
                             <input type="text" name="slug_product" class="form-control" id="exampleInputEmail1" value="{{$pro->product_name}}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Giá sản phẩm</label>
+                            <label for="exampleInputEmail1">Giá sản phẩm mới</label>
                             <input type="text" name="product_price" class="form-control" id="exampleInputEmail1" value="{{$pro->product_price}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Giá sản phẩm cũ</label>
+                            <input type="text" name="product_price_old" class="form-control" id="exampleInputEmail1" value="{{$pro->product_price_old}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>

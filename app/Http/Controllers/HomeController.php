@@ -16,10 +16,17 @@ class HomeController extends Controller
 {
     public function index(){
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')->get();
-        $all_product = DB::table('tbl_product')->where('product_status','0')->orderby('product_id','desc')->get();
+        $all_product = DB::table('tbl_product')->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')->where('product_status','1')->orderby('product_id','desc')->limit(8)->get();
         $lastest_posts = blog_post::where("status", 1)->orderBy('created_at', 'DESC')->take(4)->get();
         return view('home.home')->with('category',$cate_product)->with('all_product',$all_product)->with('lastest_posts', $lastest_posts);
     }
+
+    public function index1(){
+        $category_by_id = DB::table('tbl_product')->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')->paginate(20);
+        return view('shop.components.product', compact('category_by_id'))->with('breadcrumb_name', 'Cửa hàng cà phê');
+    }
+
+    
 
     public function blog(){
         $posts = blog_post::where("status", 1)->orderBy('created_at', 'DESC')->paginate(2);

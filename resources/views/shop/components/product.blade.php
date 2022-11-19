@@ -1,5 +1,15 @@
 @extends('shop.shop')
+
 @section('content')
+<section class="breadcrumb_section text-uppercase deco_wrap" style="background-image: url({{asset('public/frontend/images/breadcrumb/breadcrumb_bg_01.jpg')}});">
+    <div class="container">
+        <h1 class="page_title text-white wow fadeInUp" data-wow-delay=".1s">{{$breadcrumb_name}}</h1>
+        <ul class="breadcrumb_nav ul_li wow fadeInUp" data-wow-delay=".2s">
+            <li><a href="{{URL::to('/trang-chu')}}"><i class="fas fa-home"></i>trang chủ</a></li>
+            <li>{{$breadcrumb_name}}</li>
+        </ul>
+    </div>
+</section>
 <!-- blog area start -->
 <div class="shop_section pt-120 pb-105">
     <div class="container">
@@ -60,7 +70,7 @@
                                     <div class="pp__content pp__content--2 mt-25">
                                         <div class="pp__c-top d-flex align-items-center justify-content-center">
                                             <div class="pp__cat pp__cat--2">
-                                                <a href="#">cà phê hạt</a>
+                                                <small>{{$product->category_name}}</small>
                                             </div>
                                         </div>
                                         <h4 class="pp__title pp__title--2">
@@ -79,15 +89,7 @@
                     </div>
                 </div>
                 <div class="cafena-pagination mt-60">
-                    <ul>
-                        <li><a href="#"><span><i class="far fa-angle-double-left"></i></span></a></li>
-                        <li><a href="#"><span>01</span></a></li>
-                        <li><a href="#"><span class="current">02</span></a></li>
-                        <li><a href="#"><span>03</span></a></li>
-                        <li><a href="#"><span>...</span></a></li>
-                        <li><a href="#"><span>10</span></a></li>
-                        <li><a href="#"><span><i class="far fa-angle-double-right"></i></span></a></li>
-                    </ul>
+                    {{$category_by_id->links('pagination.default')}}
                 </div>
             </div>
         </div>

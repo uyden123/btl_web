@@ -26,6 +26,7 @@
                                     <th>Slug</th>
                                     <th>Hình ảnh</th>
                                     <th>Giá</th>
+                                    <th>Giá cũ</th>
                                     <th>Danh mục</th>
                                     <th>Trạng thái</th>
                                     <th>Cập nhật</th>
@@ -40,6 +41,7 @@
                                     <td>{{ $pro->slug_product }}</td>
                                     <td><img src="public/upload/product/{{$pro->product_image}}" height="60px" width="60px"></td>
                                     <td>{{ number_format($pro->product_price).'đ' }}</td>
+                                    <td>{{ number_format($pro->product_price_old).'đ' }}</td>
                                     <td>{{ $pro->category_name }}</td>
                                     <td>{{$pro->product_status==0 ? 'Ẩn': 'Hiển thị'}}</td>
                                     <td>
