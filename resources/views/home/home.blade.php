@@ -322,7 +322,7 @@
                                             <div class="comments">
                                                 <i class="fa fa-comment"></i>
                                                 <p>
-                                                    Lânf đầu trải nghiệm mua hàng tại CAFENOD mọi thứ rất tuyệt vời. Nhân viên tư vấn rất nhiệt tình, sản phẩm đa dạng phong phú nhiều sự lựa chọn. Giao hàng nhanh chóng đặt sáng chiều đã nhận được hàng. Cafe hạt rất thơm, màu rất đẹp. Hương vị thì khỏi bàn. Trải nghiệm cafe tại NOD rất tuyệt vời. Lần sau sẽ ủng hộ tiếp.
+                                                    Lần đầu trải nghiệm mua hàng tại CAFENOD mọi thứ rất tuyệt vời. Nhân viên tư vấn rất nhiệt tình, sản phẩm đa dạng phong phú nhiều sự lựa chọn. Giao hàng nhanh chóng đặt sáng chiều đã nhận được hàng. Cafe hạt rất thơm, màu rất đẹp. Hương vị thì khỏi bàn. Trải nghiệm cafe tại NOD rất tuyệt vời. Lần sau sẽ ủng hộ tiếp.
                                                 </p>
                                                 <img src="{{asset('public/frontend/images/products/cafe-hat.png')}}" alt="">
                                                 <h6 class="text-uppercase">hoàng thị dung</h6>
@@ -332,7 +332,7 @@
                                             <div class="comments">
                                                 <i class="fa fa-comment"></i>
                                                 <p>
-                                                    Lânf đầu trải nghiệm mua hàng tại CAFENOD mọi thứ rất tuyệt vời. Nhân viên tư vấn rất nhiệt tình, sản phẩm đa dạng phong phú nhiều sự lựa chọn. Giao hàng nhanh chóng đặt sáng chiều đã nhận được hàng. Cafe hạt rất thơm, màu rất đẹp. Hương vị thì khỏi bàn. Trải nghiệm cafe tại NOD rất tuyệt vời. Lần sau sẽ ủng hộ tiếp.
+                                                    Chất lượng thực phẩm và dịch vụ rất tốt. Thực đơn phong phú với các món thân thiện với trẻ em cũng như hải sản địa phương và thậm chí cả món khai vị cho những người không thích hải sản. Nơi tuyệt vời! Cảm ơn. Chúng tôi hoàn toàn thích mọi thứ ở đó!
                                                 </p>
                                                 <img src="{{asset('public/frontend/images/products/cafe-hat.png')}}" alt="">
                                                 <h6 class="text-uppercase">nguyễn phú vinh</h6>
@@ -342,7 +342,7 @@
                                             <div class="comments">
                                                 <i class="fa fa-comment"></i>
                                                 <p>
-                                                    Lânf đầu trải nghiệm mua hàng tại CAFENOD mọi thứ rất tuyệt vời. Nhân viên tư vấn rất nhiệt tình, sản phẩm đa dạng phong phú nhiều sự lựa chọn. Giao hàng nhanh chóng đặt sáng chiều đã nhận được hàng. Cafe hạt rất thơm, màu rất đẹp. Hương vị thì khỏi bàn. Trải nghiệm cafe tại NOD rất tuyệt vời. Lần sau sẽ ủng hộ tiếp.
+                                                    Lần đầu trải nghiệm mua hàng tại CAFENOD mọi thứ rất tuyệt vời. Nhân viên tư vấn rất nhiệt tình, sản phẩm đa dạng phong phú nhiều sự lựa chọn. Giao hàng nhanh chóng đặt sáng chiều đã nhận được hàng. Cafe hạt rất thơm, màu rất đẹp. Hương vị thì khỏi bàn. Trải nghiệm cafe tại NOD rất tuyệt vời. Lần sau sẽ ủng hộ tiếp.
                                                 </p>
                                                 <img src="{{asset('public/frontend/images/products/cafe-hat.png')}}" alt="">
                                                 <h6 class="text-uppercase">bùi huy uy</h6>

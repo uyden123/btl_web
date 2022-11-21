@@ -64,7 +64,9 @@ class BlogController extends Controller
             "blog_description" => "required|unique:blog_posts,description",
             "blog_slug" => "required|unique:blog_posts,slug",
             "blog_thumbnails" => "required",
-            "blog_content" => "required"
+            "blog_content" => "required",
+            "tags" => "required",
+            "categories" => "required"
         ]);
 
         $post = new blog_post;
@@ -134,7 +136,9 @@ class BlogController extends Controller
             "blog_title" => "required",
             "blog_description" => "required",
             "blog_slug" => "required",
-            "blog_content" => "required"
+            "blog_content" => "required",
+            "tags" => "required",
+            "categories" => "required"
         ]);
 
 

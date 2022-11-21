@@ -11,7 +11,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link rel="stylesheet" href="{{ asset('public/backend/css/bootstrap.min.css') }}" >
     <!-- //bootstrap-css -->
     <!-- Custom CSS -->
-    <link href="{{ asset('public/backend/css/style.css') }}" rel='stylesheet' type='text/css' />
+    <link href="{{ asset('public/backend/css/style.css?v=').time() }}" rel='stylesheet' type='text/css' />
     <link href="{{ asset('public/backend/css/style-responsive.css') }}" rel="stylesheet"/>
     <!-- font CSS -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -37,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <header class="header fixed-top clearfix">
         <!--logo start-->
         <div class="brand">
-            <a href="index.html" class="logo">
+            <a href="{{URL::to('/admin')}}" class="logo">
                 ADMIN
             </a>
             <div class="sidebar-toggle-box">
@@ -48,11 +48,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="top-nav clearfix">
             <!--search & user info start-->
             <ul class="nav pull-right top-menu">
-                <li>
+                <!-- <li>
                     <input type="text" class="form-control search" placeholder=" Search">
-                </li>
+                </li> -->
                 <!-- user login dropdown start-->
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <img alt="" src="{{asset('public/backend/images/2.png')}}">
                         <span class="username">
@@ -70,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                         <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                         <li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
-                    </ul>
+                    </ul> -->
                 </li>
                 <!-- user login dropdown end -->
 
@@ -106,22 +106,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Thương hiệu sản phẩm</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="{{ URL::to('/add-brand-product') }}">Thêm thương hiệu</a></li>
-                            <li><a href="{{ URL::to('/all-brand-product') }}">Liệt kê thương hiệu</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
                             <span>Sản phẩm</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="{{ URL::to('/add-product') }}">Thêm san  pham</a></li>
-                            <li><a href="{{ URL::to('/all-product') }}">Liệt kê san pham</a></li>
+                            <li><a href="{{ URL::to('/add-product') }}">Thêm sản phẩm</a></li>
+                            <li><a href="{{ URL::to('/all-product') }}">Liệt kê sản phẩm</a></li>
                         </ul>
                     </li>
 
@@ -144,7 +133,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                         <ul class="sub">
                             <li><a href="{{ URL::to('/manage-order') }}">Quản lý đơn hàng</a></li>
-                            <li><a href="{{ URL::to('/all-brand-product') }}">Liệt kê thương hiệu</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -161,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- footer -->
         <div class="footer">
             <div class="wthree-copyright">
-                <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+                <p>BTL WEB - CAFENOD!</p>
             </div>
         </div>
         <!-- / footer -->

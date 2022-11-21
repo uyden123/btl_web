@@ -154,6 +154,8 @@ return [
         'tag_slug' => 'Slug',
         'tag_name' => 'Tên tag',
         'category_slug' => 'Slug',
+        'tags' => 'Tags',
+        'categories' => 'Danh mục',
         'category_name' => 'Tên danh mục'
     ],
 
