@@ -40,7 +40,7 @@
                             }else{
                             ?>
                             <li>
-                                <a href="{{URL::to('/login-checkout')}}" class="text-white">Thanh toán</a>
+                                <a href="{{URL::to('/dang-nhap')}}" class="text-white">Thanh toán</a>
                             </li>
                             <?php
                             }
@@ -57,7 +57,7 @@
                             }else{
                             ?>
                             <li>
-                                <a href="{{URL::to('/login-checkout')}}" class="text-white">Đăng nhập</a>
+                                <a href="{{URL::to('/dang-nhap')}}" class="text-white">Đăng nhập</a>
                             </li>
                             <?php
                             }
@@ -91,7 +91,7 @@
                             </button>
                             <div class="main_menu_inner collapse navbar-collapse" id="main_menu_dropdown">
                                 <ul class="main_menu_list ul_li text-uppercase ">
-                                    @foreach(App\Category::with('categoryChildren')->where('category_parent_id',0)->where('category_status',1)->get() as $item)
+                                @foreach(App\Category::with('categoryChildren')->where('category_parent_id',0)->where('category_status',1)->get() as $item)
                                         <li class="dropdown">
                                             @if($item->categoryChildren->count()>0)
                                                 <a class="nav-link" href="{{URL::to('/'.$item->slug_category_product)}}" role="button" data-bs-toggle="dropdown">
@@ -100,7 +100,7 @@
 
                                                 <ul class="submenu dropdown-menu" >
                                                     @foreach($item->categoryChildren as $subMenu)
-                                                        <li><a href="{{URL::to('/'.$item->slug_category_product.'/'.$subMenu->category_id)}}">{{$subMenu->category_name}}</a></li>
+                                                        <li><a href="{{URL::to('/'.$item->slug_category_product.'/'.$subMenu->slug_category_product)}}">{{$subMenu->category_name}}</a></li>
                                                     @endforeach
                                                 </ul>
                                             @else
@@ -120,7 +120,7 @@
                                     </button>
                                 </li>
                                 <li>
-                                    <a type="button" class="cart_btn" href="{{URL::to('/show-cart')}}">
+                                    <a type="button" class="cart_btn" href="{{URL::to('/gio-hang')}}">
                                         <i class="fal fa-shopping-bag"></i>
                                         <small class="cart_counter">2</small>
                                     </a>
@@ -148,7 +148,7 @@
                                 }else{
                                 ?>
                                 <li>
-                                    <a type="button" class="cart_btn hiddened" href="{{URL::to('/login-checkout')}}">
+                                    <a type="button" class="cart_btn hiddened" href="{{URL::to('/dang-nhap')}}">
                                         THANH TOÁN
                                     </a>
                                 </li>
@@ -169,7 +169,7 @@
                                 }else{
                                 ?>
                                 <li>
-                                    <a type="button" class="cart_btn hiddened me-3" href="{{URL::to('/login-checkout')}}">
+                                    <a type="button" class="cart_btn hiddened me-3" href="{{URL::to('/dang-nhap')}}">
                                         ĐĂNG NHẬP
                                     </a>
                                 </li>

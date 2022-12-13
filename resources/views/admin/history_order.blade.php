@@ -32,12 +32,12 @@
                                 </thead>
                                 <tbody>
                                 @foreach($order as $key => $v_order)
-                                    @if($v_order->order_status=='1')
+                                    @if($v_order->order_status=='0')
                                         <tr>
                                             <td>{{$loop->index + 1}}</td>
                                             <td>{{ $v_order->order_code }}</td>
                                             <td>{{ $v_order->created_at }}</td>
-                                            <td>Đang chờ xử lý</td>
+                                            <td>Đã xử lý</td>
                                             <td>
                                                 <a href="{{URL::to('/view-order/'.$v_order->order_code)}}">
                                                     <i style="font-size: 20px;" class="fa fa-solid fa-eye" aria-hidden="true"></i>

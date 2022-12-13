@@ -1,9 +1,17 @@
 @extends('shop.shop')
 
-@section('stylesheet')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
-@endsection
+
 @section('content')
+    <section class="breadcrumb_section text-uppercase deco_wrap" style="background-image: url({{asset('public/frontend/images/breadcrumb/breadcrumb_bg_01.jpg')}});">
+        <div class="container">
+            <h1 class="page_title text-white wow fadeInUp" data-wow-delay=".1s">chi tiết sản phẩm</h1>
+            <ul class="breadcrumb_nav ul_li wow fadeInUp" data-wow-delay=".2s">
+                <li><a href="{{URL::to('/trang-chu')}}"><i class="fas fa-home"></i>trang chủ</a></li>
+                <li>cửa hàng cafe</li>
+            </ul>
+        </div>
+    </section>
+
     @foreach($details_product as $key => $value)
     <!-- details_section - end
     ================================================== -->
@@ -67,18 +75,11 @@
             <div class="image_similar_products wow fadeInUp" data-wow-delay=".1s">
                 <div class="row ">
                     <h6 class="title_products">Ảnh sản phẩm</h6>
+                    @foreach($gallery as $key => $gal)
                     <div class="col-3">
-                        <img class="img-fluid" src="{{asset('public/frontend/images/shop/cafe_hat/cf-1.jpg')}}">
+                        <img class="img-fluid" src="{{asset('public/upload/gallery/'.$gal->gallery_image)}}" alt="{{$gal->gallery_name}}">
                     </div>
-                    <div class="col-3">
-                        <img class="img-fluid" src="{{asset('public/frontend/images/shop/cafe_hat/cf-1.jpg')}}">
-                    </div>
-                    <div class="col-3">
-                        <img class="img-fluid" src="{{asset('public/frontend/images/shop/cafe_hat/cf-1.jpg')}}">
-                    </div>
-                    <div class="col-3">
-                        <img class="img-fluid" src="{{asset('public/frontend/images/shop/cafe_hat/cf-1.jpg')}}">
-                    </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -95,14 +96,6 @@
     @endforeach
 @endsection
 
-@section('script')
+{{--@section('script')
     <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.add-to-cart').click(function () {
-                swal("Hello world!");
-            });
-        });
-    </script>
-@endsection
+@endsection--}}

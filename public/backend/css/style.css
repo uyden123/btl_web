@@ -13,7 +13,7 @@ html, body{
 	font-family: 'Roboto', sans-serif;
     font-size: 100%;
     overflow-x: hidden;
-    background: url(../images/bg.jpg) no-repeat 0px 0px;
+    /*background: url(../images/bg.jpg) no-repeat 0px 0px;*/
 	background-size:cover;
 }
 body a{
@@ -25,7 +25,7 @@ body a{
 	text-decoration:none;
 }
 h1,h2,h3,h4,h5,h6{
-	margin:0;			   
+	margin:0;
 }
 p{
 	margin:0;
@@ -42,7 +42,7 @@ body a:hover{
     width:240px;
     height:100%;
     position:fixed;
-    background:rgba(52, 48, 48, 0.78);
+    background:rgb(18 13 13);
     -webkit-transition:all .3s ease-in-out;
     -moz-transition:all .3s ease-in-out;
     -o-transition:all .3s ease-in-out;
@@ -170,7 +170,7 @@ ul.sidebar-menu li a {
     transition:all 0.3s ease;
 }
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
-    background: rgba(40, 40, 46, 0.28);
+    background: rgb(40 40 46);
     color: #fff;
     display: block;
     -webkit-transition: all 0.3s ease;
@@ -202,7 +202,7 @@ ul.sidebar-menu li a.active i {
     transition:all .3s ease-in-out;
 }
 .footer {
-    background: #d19a98;
+    background: rgba(0, 0, 0, 0.62);
     padding: 20px;
 }
 .footer p {
@@ -219,7 +219,7 @@ ul.sidebar-menu li a.active i {
     left:0;
     right:0;
     z-index:1002;
-    background:rgb(240, 188, 180);
+    background:rgba(0, 0, 0, 0.62);
     -webkit-transition:all .3s ease-in-out;
     -moz-transition:all .3s ease-in-out;
     -o-transition:all .3s ease-in-out;
@@ -239,7 +239,7 @@ ul.sidebar-menu li a.active i {
     width:100%;
 }
 .brand {
-    background:#8b5c7e;
+    background:#c7a17a;
     float:left;
     width:240px;
     height:80px;
@@ -506,8 +506,8 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     padding: 0px;
     background: none;
     margin-right: 0;
-    border: 1px solid #8b5c7e;
-    background: #8b5c7e;
+    border: 1px solid rgba(0, 0, 0, 0.43);
+    background: #fff;
 }
 .top-nav ul.top-menu>li.language>a {
     margin-top:-2px;
@@ -572,18 +572,18 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     -ms-transition: all .3s ease;
     -o-transition: all .3s ease;
     transition: all .3s ease;
-    border: 1px solid #8b5c7e;
+    border: 1px solid rgba(0, 0, 0, 0.35);
     box-shadow: none;
-    background: #8b5c7e url(../images/search-icon.png) no-repeat 10px 8px;
+    background: #c7a17a url(../images/search-icon.png) no-repeat 10px 8px;
     padding: 0 5px 0 30px;
-    color: #fff;
+    color: #000;
     border-radius: 100px;
     -webkit-border-radius: 100px;
 	cursor:pointer;
 }
 .search:focus {
     width:180px;
-    border:1px solid #8b5c7e;
+    border:1px solid rgba(0, 0, 0, 0.43);
     box-shadow:none;
     -webkit-transition:all .3s ease;
     -moz-transition:all .3s ease;
@@ -601,7 +601,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     float:left;
     margin-top:23px;
     margin-left:-15px;
-    background:#8b5c7e;
+    background:#000;
     border-radius:50%;
     -webkit-border-radius:50%;
     width:32px;
@@ -617,7 +617,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     color:#fff;
 }
 .sidebar-toggle-box:hover {
-    background:#fa9fa4;
+    background: rgba(0, 0, 0, 0.62);
 }
 .hide-left-bar {
     margin-left:-240px !important;
@@ -782,9 +782,9 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     font-size: 18px;
     font-weight: 400;
     padding: 0 16px;
-    background:#ddede0;
+    background:#c7a17a;
    border-top-right-radius: 2px;
-   border-top-left-radius: 2px; 
+   border-top-left-radius: 2px;
     text-transform: uppercase;
     text-align: center;
 }
@@ -1025,7 +1025,7 @@ div#graph1,div#graph4,div#graph5,div#graph6,div#graph7,div#graph8,div#graph9 {
 }
 .progress .bar {
 		z-index: 2;
-		height:15px; 
+		height:15px;
 		font-size: 12px;
 		color: white;
 		text-align: center;
@@ -1041,19 +1041,19 @@ div#graph1,div#graph4,div#graph5,div#graph6,div#graph7,div#graph8,div#graph9 {
 	}
 .progress-striped .yellow{
 	background:#f0ad4e;
-} 
+}
 .progress-striped .green{
 	background:#5cb85c;
-} 
+}
 .progress-striped .light-blue{
 	background:#4F52BA;
-} 
+}
 .progress-striped .red{
 	background:#d9534f;
-} 
+}
 .progress-striped .blue{
 	background:#428bca;
-} 
+}
 .progress-striped .orange {
 	background:#e94e02;
 }
@@ -1190,7 +1190,7 @@ h4.title {
     -ms-transition: 0.5s all;
     -moz-transition: 0.5s all;
     cursor: pointer;
-} 
+}
 .icon-box:hover {
     background: #000;
 	transition:0.5s all;
@@ -1209,11 +1209,11 @@ h4.title {
     float: left;
     width: 12.5%;
     height: 115px;
-    padding: 10px; 
+    padding: 10px;
     line-height: 1.4;
-    text-align: center;  
+    text-align: center;
     font-size: 12px;
-    list-style-type: none;	
+    list-style-type: none;
 }
 .codes .bs-glyphicons .glyphicon {
     margin-top: 5px;
@@ -1231,7 +1231,7 @@ h4.title {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	color: #777;
-} 
+}
 .codes .bs-glyphicons .glyphicon-class {
     display: block;
     text-align: center;
@@ -1289,7 +1289,7 @@ h3.agileits-icons-title {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	color: #777;
-} 
+}
 .bs-glyphicons .glyphicon-class {
     display: block;
     text-align: center;
@@ -1401,12 +1401,12 @@ li.list-group-item1 {
 }
 .grid_4{
 	background:none;
-	
+
 }
 .label {
 	font-weight: 300 !important;
 	border-radius:4px;
-}  
+}
 .grid_5{
 	background:none;
 	padding:2em 0;
@@ -1641,7 +1641,7 @@ ul.bs-glyphicons-list {
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .table-agile-info{
-	background: #eef9f0;
+	background: #c7a17a;
     padding: 2em;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -1656,8 +1656,8 @@ ul.bs-glyphicons-list {
 }
 .panel-default>.panel-heading {
     color: #000000 ! important;
-    background-color: #ddede0 ! important;
-    border-color: #ddede0 ! important;
+    background-color: #c7a17a73 ! important;
+    border-color: #c7a17a ! important;
     font-size: 20px;
 }
 p.hd-title {
@@ -2475,12 +2475,12 @@ h4 input[type="checkbox"] {
 	color:#fff !important;
 }
 :-moz-placeholder { /* Firefox 18- */
-	color:#fff !important; 
+	color:#fff !important;
 }
 ::-moz-placeholder {  /* Firefox 19+ */
 	color:#fff !important;
 }
-:-ms-input-placeholder {  
+:-ms-input-placeholder {
 	color:#fff !important;
 }
 /*--//placeholder-color--*/

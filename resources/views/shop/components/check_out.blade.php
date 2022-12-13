@@ -18,7 +18,15 @@
     @include('components.header')
 
     <main>
-        @include('components.breadcrumb')
+        <section class="breadcrumb_section text-uppercase deco_wrap" style="background-image: url({{asset('public/frontend/images/breadcrumb/breadcrumb_bg_01.jpg')}});">
+            <div class="container">
+                <h1 class="page_title text-white wow fadeInUp" data-wow-delay=".1s">thông tin thanh toán</h1>
+                <ul class="breadcrumb_nav ul_li wow fadeInUp" data-wow-delay=".2s">
+                    <li><a href="{{URL::to('/trang-chu')}}"><i class="fas fa-home"></i>trang chủ</a></li>
+                    <li>thanh toán</li>
+                </ul>
+            </div>
+        </section>
 
         <div class="checkout-area m-5">
             <div class="container wow fadeInUp" data-wow-delay=".1s">
@@ -69,16 +77,7 @@
                                                         <div class="row justify-content-end">
                                                             <div class="col-xl-3 col-lg-7">
                                                                 <div class="cart-total mt-100">
-                                                                    <h2 class="title text-uppercase">Tổng tiền</h2>
-                                                                    <div class="ct-sub">
-                                                                        <span>Tổng tiền</span>
-                                                                        <span>...VNĐ</span>
-                                                                    </div>
-                                                                    <div class="ct-sub ct-sub__total">
-                                                                        <span>Thanh toán</span>
-                                                                        <span>...VNĐ</span>
-                                                                    </div>
-                                                                    <input type="submit" class="site-btn" value="Thanh toán ngay">
+                                                                    <input type="submit" class="site-btn" style="background-color: #c7a17a; color: white; width: 50%; float: right;" value="Thanh toán ngay">
                                                                 </div>
                                                             </div>
                                                         </div>

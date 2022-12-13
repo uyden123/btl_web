@@ -8,10 +8,37 @@ use App\Order;
 use App\OrderDetails;
 use App\Customer;
 use App\Product;
+use DB;
+use Illuminate\Support\Facades\Redirect;
 use PDF;
+session_start();
 
 class OrderController extends Controller
 {
+
+    public function edit_order($order_code){
+        $edit_order = DB::table('tbl_order')->where('order_code', $order_code)->get();
+        $manageer_product = view('admin.edit_order')->with('edit_order', $edit_order);
+        return view('admin_layout')->with('admin.edit_order', $manageer_product);
+    }
+
+    public function update_order(Request $request,$order_code){
+        $this->validate($request, [
+            "order_status" => "required",
+        ]);
+        $data=array();
+        $data['order_status'] = $request->order_status;
+
+        DB::table('tbl_order')->where('order_code',$order_code)->update($data);
+        return Redirect::to('manage-order');
+    }
+
+    public function delete_order($order_code){
+        DB::table('tbl_order')->where('order_code',$order_code)->delete();
+        DB::table('tbl_order_details')->where('order_code',$order_code)->delete();
+        return Redirect::back();
+    }
+
     public function print_order($checkout_code){
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($this->print_order_convert($checkout_code));
@@ -129,6 +156,11 @@ $output .= '
     public function manage_order(){
         $order = Order::orderby('created_at','desc')->get();
         return view('admin.manage_order')->with(compact('order'));
+    }
+
+    public function history_order(){
+        $order = Order::orderby('created_at','desc')->get();
+        return view('admin.history_order')->with(compact('order'));
     }
 
     public function view_order($order_code){

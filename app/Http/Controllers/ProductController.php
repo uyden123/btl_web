@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use File;
 use App\Product;
+use App\Gallery;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -26,6 +28,14 @@ class ProductController extends Controller
     }
 
     public function save_product(Request $request){
+        $this->validate($request, [
+            "product_name" => "required|unique:tbl_product,product_name",
+            "slug_product" => "required|unique:tbl_product,slug_product",
+            "product_price" => "required",
+            "product_desc" => "required",
+            "product_content" => "required",
+        ]);
+
         $data=array();
         $data['product_name'] = $request->product_name;
         $data['slug_product'] = $request->slug_product;
@@ -43,25 +53,10 @@ class ProductController extends Controller
             $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
             $get_image->move('public/upload/product', $new_image);
             $data['product_image'] = $new_image;
-            DB::table('tbl_product')->insert($data);
-            Session::put('message','Ok nha');
-            return Redirect::to('all-product');
         }
-        $data['product_image'] = '';
+        else $data['product_image'] = '';
         DB::table('tbl_product')->insert($data);
-        Session::put('message','Ok nha');
-        return Redirect::to('all-product');
-    }
-
-    public function unactive_product($product_id){
-        DB::table('tbl_product')->where('product_id', $product_id)->update(['product_status'=>1]);
-        Session::put('message','Ok nha');
-        return Redirect::to('all-product');
-    }
-
-    public function active_product($product_id){
-        DB::table('tbl_product')->where('product_id', $product_id)->update(['product_status'=>0]);
-        Session::put('message','Ok nha');
+        Session::flash('message','Thêm sản phẩm thành công!');
         return Redirect::to('all-product');
     }
 
@@ -73,6 +68,13 @@ class ProductController extends Controller
     }
 
     public function update_product(Request $request,$product_id){
+        $this->validate($request, [
+            "product_name" => "required",
+            "slug_product" => "required",
+            "product_price" => "required",
+            "product_desc" => "required",
+            "product_content" => "required",
+        ]);
         $data=array();
         $data['product_name'] = $request->product_name;
         $data['slug_product'] = $request->slug_product;
@@ -90,27 +92,46 @@ class ProductController extends Controller
             $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
             $get_image->move('public/upload/product', $new_image);
             $data['product_image'] = $new_image;
-            DB::table('tbl_product')->where('product_id',$product_id)->update($data);
-            Session::put('message','Ok nha');
-            return Redirect::to('all-product');
         }
 
         DB::table('tbl_product')->where('product_id',$product_id)->update($data);
-        Session::put('message','Ok nha');
         return Redirect::to('all-product');
     }
 
     public function delete_product($product_id){
         DB::table('tbl_product')->where('product_id',$product_id)->delete();
-        Session::put('message','Ok nha');
+        Session::flash('message','Xoá sản phẩm thành công!');
         return Redirect::to('all-product');
     }
 
-    public function details_product($product_id){
+    /*public function details_product($product_id){
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
+        $gallery = Gallery::where('product_id', $product_id)->get();
         $details_product = DB::table('tbl_product')
             ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
             ->where('tbl_product.product_id',$product_id)->get();
-        return view('shop.components.product_details')->with('category',$cate_product)->with('details_product',$details_product);
+        return view('shop.components.product_details')->with('category',$cate_product)
+            ->with('details_product',$details_product)->with('gallery', $gallery);
+    }*/
+
+    public function details_product($slug_product , Request $request){
+
+        $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
+
+        $details_product = DB::table('tbl_product')
+            ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
+            ->where('tbl_product.slug_product',$slug_product)->get();
+
+        foreach($details_product as $key => $value){
+            $category_id = $value->category_id;
+            $product_id = $value->product_id;
+        }
+
+        $gallery = Gallery::where('product_id', $product_id)->get();
+
+        return view('shop.components.product_details')->with('category',$cate_product)
+            ->with('details_product',$details_product)->with('gallery', $gallery);
+
     }
+
 }

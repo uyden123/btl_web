@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
+    <section class="breadcrumb_section text-uppercase deco_wrap" style="background-image: url({{asset('public/frontend/images/breadcrumb/breadcrumb_bg_01.jpg')}});">
+        <div class="container">
+            <h1 class="page_title text-white wow fadeInUp" data-wow-delay=".1s">giỏ hàng</h1>
+            <ul class="breadcrumb_nav ul_li wow fadeInUp" data-wow-delay=".2s">
+                <li><a href="{{URL::to('/trang-chu')}}"><i class="fas fa-home"></i>trang chủ</a></li>
+                <li>giỏ hàng</li>
+            </ul>
+        </div>
+    </section>
     <!-- cart area start -->
     <div class="cart-area pt-120 pb-120">
         <div class="container wow fadeInUp" data-wow-delay=".1s">
@@ -67,7 +76,7 @@
                             <span>{{Cart::pricetotal(0).'đ'}}</span>
                         </div>
                         <div class="ct-sub">
-                            <span>Thue</span>
+                            <span>Phí vận chuyển</span>
                             <span>{{Cart::tax(0).'đ'}}</span>
                         </div>
                         <div class="ct-sub ct-sub__total">
@@ -83,7 +92,7 @@
                         <?php
                         }else{
                         ?>
-                        <a href="{{URL::to('/login-checkout')}}" class="site-btn">Thanh toán ngay</a>
+                        <a href="{{URL::to('/dang-nhap')}}" class="site-btn">Thanh toán ngay</a>
                         <?php
                         }
                         ?>

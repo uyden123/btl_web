@@ -10,6 +10,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- bootstrap-css -->
     <link rel="stylesheet" href="{{ asset('public/backend/css/bootstrap.min.css') }}" >
     <!-- //bootstrap-css -->
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Custom CSS -->
     <link href="{{ asset('public/backend/css/style.css') }}" rel='stylesheet' type='text/css' />
     <link href="{{ asset('public/backend/css/style-responsive.css') }}" rel="stylesheet"/>
@@ -26,6 +27,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="{{ asset('public/backend/js/jquery2.0.3.min.js') }}"></script>
     <script src="{{ asset('public/backend/js/raphael-min.js') }}"></script>
     <script src="{{ asset('public/backend/js/morris.js') }}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/sweetalert.css')}}">
 
     <link href="{{ asset('public/backend/css/bootstrap3-wysihtml5.min.css') }}" rel='stylesheet' type='text/css' />
     @section('headSection')
@@ -95,6 +98,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
+                            <span>Banner</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{ URL::to('/add-banner') }}">Thêm banner</a></li>
+                            <li><a href="{{ URL::to('/all-banner') }}">Liệt kê banner</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
                             <span>Danh mục sản phẩm</span>
                         </a>
                         <ul class="sub">
@@ -106,22 +120,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Thương hiệu sản phẩm</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="{{ URL::to('/add-brand-product') }}">Thêm thương hiệu</a></li>
-                            <li><a href="{{ URL::to('/all-brand-product') }}">Liệt kê thương hiệu</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
                             <span>Sản phẩm</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="{{ URL::to('/add-product') }}">Thêm san  pham</a></li>
-                            <li><a href="{{ URL::to('/all-product') }}">Liệt kê san pham</a></li>
+                            <li><a href="{{ URL::to('/add-product') }}">Thêm sản phẩm</a></li>
+                            <li><a href="{{ URL::to('/all-product') }}">Liệt kê sản phẩm</a></li>
                         </ul>
                     </li>
 
@@ -131,9 +134,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>Tin tức</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="{{ URL::to('/blog_post') }}">Danh sách bài viết</a></li>
-                            <li><a href="{{ URL::to('/blog_tag') }}">Tag bài viết</a></li>
-                            <li><a href="{{ URL::to('/blog_category') }}">Danh mục bài viết</a></li>
+                            <li><a href="{{ URL::to('/admin/blog_post') }}">Danh sách bài viết</a></li>
+                            <li><a href="{{ URL::to('/admin/blog_tag') }}">Tag bài viết</a></li>
+                            <li><a href="{{ URL::to('/admin/blog_category') }}">Danh mục bài viết</a></li>
                         </ul>
                     </li>
 
@@ -143,8 +146,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>Đơn hàng</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="{{ URL::to('/manage-order') }}">Quản lý đơn hàng</a></li>
-                            <li><a href="{{ URL::to('/all-brand-product') }}">Liệt kê thương hiệu</a></li>
+                            <li><a href="{{ URL::to('/manage-order') }}">Xử lý đơn hàng</a></li>
+                            <li><a href="{{ URL::to('/history-order') }}">Lịch sử đơn hàng</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -161,7 +164,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- footer -->
         <div class="footer">
             <div class="wthree-copyright">
-                <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+                <p>© 2022 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">TeamBTL-Web-N4</a></p>
             </div>
         </div>
         <!-- / footer -->
@@ -175,7 +178,105 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{ asset('public/backend/js/jquery.nicescroll.js') }}"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="{{ asset('public/backend/js/flot-chart/excanvas.min.js') }}"></script><![endif]-->
 <script src="{{ asset('public/backend/js/jquery.scrollTo.js') }}"></script>
-<!-- morris JavaScript -->
+<script src="{{asset('public/frontend/js/sweetalert.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function (){
+        load_gallery();
+
+        function load_gallery(){
+            var pro_id=$('.pro_id').val();
+            var _token = $('input[name="_token"]').val();
+            /*alert(pro_id)*/
+            $.ajax({
+                url:"{{url('/select-gallery')}}",
+                method:"POST",
+                data:{pro_id:pro_id,_token:_token},
+                success:function (data){
+                    $('#gallery_load').html(data);
+                }
+            });
+        }
+
+        $('#file').change(function () {
+            var error = '';
+            var files = $('#file')[0].files;
+
+            if(files.length>4){
+                error +='<p>Chọn tối đa 4 ảnh</p>';
+            }else if(files.length==''){
+                error +='<p>Không đượ bỏ trống ảnh</p>';
+            }else if(files.size>2000000){
+                error +='<p>File ảnh không được lớn hơn 2MB</p>';
+            }
+
+            if (error==''){
+
+            }else {
+                $('#file').val('');
+                $('#error_gallery').html('<span class="text-danger">'+error+'</span>');
+                return false;
+            }
+        });
+
+        $(document).on('blur', '.edit_image_name', function () {
+            var gal_id = $(this).data('gal_id');
+            var gal_text = $(this).text();
+            var _token = $('input[name="_token"]').val();
+
+            $.ajax({
+                url:"{{url('/update-gallery')}}",
+                method:"POST",
+                data:{gal_id:gal_id,gal_text:gal_text,_token:_token},
+                success:function (data){
+                    load_gallery();
+                    $('#error_gallery').html('<span class="text-danger">Đã cập nhật tên ảnh</span>');
+                }
+            });
+        });
+
+        $(document).on('click', '.delete-galery', function () {
+            var gal_id = $(this).data('gal_id');
+            var _token = $('input[name="_token"]').val();
+
+            if (confirm('Bạn muốn xóa ảnh này?')) {
+                $.ajax({
+                    url: "{{url('/delete-gallery')}}",
+                    method: "POST",
+                    data: {gal_id: gal_id, _token: _token},
+                    success: function (data) {
+                        load_gallery();
+                        $('#error_gallery').html('<span class="text-danger">Xóa ảnh thành công</span>');
+                    }
+                });
+            }
+        });
+
+        $(document).on('change', '.file_image', function () {
+            var gal_id = $(this).data('gal_id');
+            var image = document.getElementById("file-"+gal_id).files[0];
+
+            var form_data = new FormData();
+            form_data.append("file", document.getElementById("file-"+gal_id).files[0]);
+            form_data.append("gal_id", gal_id);
+            $.ajax({
+                url:"{{url('/update-image-gallery')}}",
+                method:"POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success:function (data){
+                    load_gallery();
+                    $('#error_gallery').html('<span class="text-danger">Đã cập nhật hình ảnh</span>');
+                }
+            });
+        });
+
+    });
+</script>
 <script>
     $(document).ready(function() {
         //BOX BUTTON SHOW AND CLOSE
@@ -263,6 +364,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     });
 </script>
+
 @section('footerSection')
 @show
 <!-- //calendar -->
