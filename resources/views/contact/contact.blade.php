@@ -60,20 +60,32 @@
                     </div>
                 </div>
                 <div class="row single-form g-0 wow fadeInUp" data-wow-delay=".1s">
-                    <form>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Tên</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <form action="{{URL::to('/add-contact')}}" method="post">
+                        <div class="mb-3 d-flex">
+                            <div class="w-50">
+                                <label for="exampleInputEmail1" class="form-label">Tên</label>
+                                <input style="width: 99%" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="w-50">
+                                <label for="exampleInputEmail1" class="form-label">SDT</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="exampleInputPassword1">
+                        <div class="mb-3 d-flex">
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <input style="width: 99%" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1" class="form-label">Địa chỉ</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Nội dung</label>
                             <textarea class="form-control" id="exampleInputPassword2"></textarea>
                         </div>
-                        <a class="btn btn_border border_y text-uppercase float-end wow fadeInUp" data-wow-delay=".1s" href="shop_details.html">Gửi</a>
+                        <input type="submit" value="Gửi" class="btn btn_border border_y text-uppercase float-end wow fadeInUp" data-wow-delay=".1s">
 
                     </form>
                 </div>

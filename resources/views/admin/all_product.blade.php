@@ -23,6 +23,7 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Tên sản phẩm</th>
+                                    <th>Ảnh liên quan</th>
                                     <th>Slug</th>
                                     <th>Hình ảnh</th>
                                     <th>Giá</th>
@@ -38,6 +39,7 @@
                                 <tr>
                                     <td>{{$loop->index + 1}}</td>
                                     <td>{{ $pro->product_name }}</td>
+                                    <td><a href="{{URL::to('/add-gallery/'.$pro->product_id)}}">Thêm ảnh liên quan</a></td>
                                     <td>{{ $pro->slug_product }}</td>
                                     <td><img src="public/upload/product/{{$pro->product_image}}" height="60px" width="60px"></td>
                                     <td>{{ number_format($pro->product_price).'đ' }}</td>

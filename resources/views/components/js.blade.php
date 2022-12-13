@@ -7,3 +7,5 @@
 
 <!-- custom - jquery include -->
 <script src="{{asset('public/frontend/js/main.js')}}"></script>
+
+<script src="{{asset('public/frontend/js/sweetalert.js')}}"></script>

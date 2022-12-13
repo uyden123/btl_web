@@ -84,7 +84,7 @@ class CheckoutController extends Controller
 
     public function logout_checkout(){
         Session::flush();
-        return Redirect::to('/login-checkout');
+        return Redirect::to('/dang-nhap');
     }
 
     public function login_customer(Request $request){
@@ -95,7 +95,7 @@ class CheckoutController extends Controller
             Session::put('customer_id', $results->customer_id);
             return Redirect::to('/checkout');
         }else{
-            return Redirect::to('/login-checkout');
+            return Redirect::to('/dang-nhap');
         }
     }
 
@@ -114,7 +114,7 @@ class CheckoutController extends Controller
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
         $order_data['order_total'] = Cart::total();
-        $order_data['order_status'] = 'Đang chờ xử lý';
+        $order_data['order_status'] = '1';
         $order_id = DB::table('tbl_order')->insertGetId($order_data);
 
         //insert order details

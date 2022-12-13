@@ -87,13 +87,13 @@
                 <div class="row align-items-center justify-content-lg-between">
                     <div class="col-lg-6 col-md-6 order-last">
                         <div class="video_ad wow fadeInRight" data-wow-delay=".1s">
-                            <iframe 
-                            width="560" 
-                            height="315" 
-                            src="https://www.youtube-nocookie.com/embed/TyclnS01qpE" 
-                            title="YouTube video player" 
-                            frameborder="0" 
-                            allow="autoplay; encrypted-media;" 
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube-nocookie.com/embed/TyclnS01qpE"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="autoplay; encrypted-media;"
                             allowfullscreen></iframe>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 ">
-                        <a class="btn btn_border border_white text-uppercase float-end wow fadeInUp" data-wow-delay=".2s" href="{{URL::to('/cua-hang-cafe')}}">xem thêm</a>
+                        <a class="btn btn_border border_white text-uppercase float-end wow fadeInUp" data-wow-delay=".2s" href="{{URL::to('/cua-hang-cafe/cafe-hat')}}">xem thêm</a>
                     </div>
                 </div>
                 <div class="row">
@@ -152,7 +152,7 @@
                                         <div class="item mt-30">
                                             <div class="pp__item pp__item--2 active text-center pt-20 pb-20">
                                                 <div class="pp__thumb pp__thumb--2 mt-35">
-                                                    <a class="item_image" href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}">
+                                                    <a class="item_image" href="{{URL::to('/chi-tiet-san-pham/'.$product->slug_product)}}">
                                                         <img src="{{URL::to('public/upload/product/'.$product->product_image)}}" class="space_img" alt="">
                                                     </a>
                                                 </div>
@@ -163,7 +163,7 @@
                                                         </div>
                                                     </div>
                                                     <h4 class="pp__title pp__title--2">
-                                                        <a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}">{{$product->product_name}}</a>
+                                                        <a href="{{URL::to('/chi-tiet-san-pham/'.$product->slug_product)}}">{{$product->product_name}}</a>
                                                     </h4>
                                                     <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
                                                         <h6 class="label">Giá - </h6>
@@ -194,20 +194,15 @@
                 <div class="ad_section ptb-50">
                     <div class="container">
                         <div class="row">
+                            @foreach($banner as $key => $ban)
                             <div class="col-md-6 col-lg-6 col-xl-6 ">
                                 <div class="advertise_1 wow fadeInLeft" data-wow-delay=".2s">
                                     <a href="#">
-                                        <img src="{{asset('public/frontend/images/banners/sale-3.png')}}" alt="sale off" class="default">
+                                        <img src="{{URL::to('public/upload/banner/'.$ban->banner_image)}}" alt="{{$ban->banner_name}}" class="default">
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-6 col-xl-6">
-                                <div class="advertise_2 wow fadeInRight" data-wow-delay=".2s">
-                                    <a href="#">
-                                        <img src="{{asset('public/frontend/images/banners/sale-4.png')}}" alt="sale off" class="default">
-                                    </a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -229,7 +224,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 ">
-                                <a class="btn btn_border border_white text-uppercase float-end wow fadeInUp" data-wow-delay=".2s" href="{{URL::to('/cua-hang-cafe')}}">xem thêm</a></div>
+                                <a class="btn btn_border border_white text-uppercase float-end wow fadeInUp" data-wow-delay=".2s" href="{{URL::to('/cua-hang-cafe/cafe-rang-xay')}}">xem thêm</a></div>
                         </div>
                         <div class="row">
                             <div class="col-xl-12 col-lg-8">
@@ -240,7 +235,7 @@
                                             <div class="col-xl-3 col-lg-6 col-md-6 mt-30">
                                                 <div class="pp__item pp__item--2 active text-center pt-20 pb-20">
                                                     <div class="pp__thumb pp__thumb--2 mt-35">
-                                                        <a class="item_image" href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}">
+                                                        <a class="item_image" href="{{URL::to('/chi-tiet-san-pham/'.$product->slug_product)}}">
                                                             <img src="{{URL::to('public/upload/product/'.$product->product_image)}}" class="space_img" alt="">
                                                         </a>
                                                     </div>
@@ -251,7 +246,7 @@
                                                             </div>
                                                         </div>
                                                         <h4 class="pp__title pp__title--2">
-                                                            <a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}">{{$product->product_name}}</a>
+                                                            <a href="{{URL::to('/chi-tiet-san-pham/'.$product->slug_product)}}">{{$product->product_name}}</a>
                                                         </h4>
                                                         <div class="pp__price pp__price--2 d-flex align-items-center justify-content-center">
                                                             <h6 class="label">Giá - </h6>
@@ -282,21 +277,28 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 con-xl-6">
-                                <div class="products bg-white text-center align-items-center align-content-center">
+                                <div class="products text-center align-items-center align-content-center">
+                                    <a href="{{URL::to('/cua-hang-cafe/cafe-hat')}}">
                                     <h3 class="text-white mr-1 wow fadeInUp" data-wow-delay=".3s">CAFE HẠT</h3>
-                                    <img src="{{asset('public/frontend/images/products/cafe-hat.png')}}" alt="cafe hat" class="img-fluid circle shadow-lg">
+                                        <img src="{{asset('public/frontend/images/products/cafe-hat.png')}}" alt="cafe hat" class="img-fluid circle shadow-lg">
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-md-4 con-xl-6">
-                                <div class="products bg-white text-center align-items-center align-content-center">
-                                    <h3 class="text-white mr-2 wow fadeInUp" data-wow-delay=".3s">CAFE HÒA TAN</h3>
-                                    <img src="{{asset('public/frontend/images/products/cafe-hoa-tan.png')}}" alt="cafe hat" class="img-fluid circle shadow-lg">
+                                <div class="products text-center align-items-center align-content-center">
+                                    <a href="{{URL::to('/cua-hang-cafe/cafe-hoa-tan')}}">
+                                        <h3 class="text-white mr-2 wow fadeInUp" data-wow-delay=".3s">CAFE HÒA TAN</h3>
+                                        <img src="{{asset('public/frontend/images/products/cafe-hoa-tan.png')}}" alt="cafe hat" class="img-fluid circle shadow-lg">
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-md-4 con-xl-6">
-                                <div class="products bg-white text-center align-items-center align-content-center">
-                                    <h3 class="text-white mr-3 wow fadeInUp" data-wow-delay=".3s">CAFE RANG XAY</h3>
-                                    <img src="{{asset('public/frontend/images/products/cafe-rang-xay.png')}}" alt="cafe hat" class="img-fluid circle shadow-lg">
+                                <div class="products text-center align-items-center align-content-center">
+                                    <a href="{{URL::to('/cua-hang-cafe/cafe-rang-xay')}}">
+                                        <h3 class="text-white mr-3 wow fadeInUp" data-wow-delay=".3s">CAFE RANG XAY</h3>
+                                        <img src="{{asset('public/frontend/images/products/cafe-rang-xay.png')}}" alt="cafe hat" class="img-fluid circle shadow-lg">
+                                    </a>
+
                                 </div>
                             </div>
                         </div>

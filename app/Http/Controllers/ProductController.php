@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use File;
 use App\Product;
+use App\Gallery;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -102,11 +104,34 @@ class ProductController extends Controller
         return Redirect::to('all-product');
     }
 
-    public function details_product($product_id){
+    /*public function details_product($product_id){
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
+        $gallery = Gallery::where('product_id', $product_id)->get();
         $details_product = DB::table('tbl_product')
             ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
             ->where('tbl_product.product_id',$product_id)->get();
-        return view('shop.components.product_details')->with('category',$cate_product)->with('details_product',$details_product);
+        return view('shop.components.product_details')->with('category',$cate_product)
+            ->with('details_product',$details_product)->with('gallery', $gallery);
+    }*/
+
+    public function details_product($slug_product , Request $request){
+
+        $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
+
+        $details_product = DB::table('tbl_product')
+            ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
+            ->where('tbl_product.slug_product',$slug_product)->get();
+
+        foreach($details_product as $key => $value){
+            $category_id = $value->category_id;
+            $product_id = $value->product_id;
+        }
+
+        $gallery = Gallery::where('product_id', $product_id)->get();
+
+        return view('shop.components.product_details')->with('category',$cate_product)
+            ->with('details_product',$details_product)->with('gallery', $gallery);
+
     }
+
 }

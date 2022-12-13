@@ -25,7 +25,7 @@
 
     <!--body-main-section-->
     <main>
-        
+
         @yield('content')
     </main>
     <!--body-main-section-->
@@ -34,9 +34,76 @@
 <!-- body_wrap - end -->
 
 @include('components.footer')
-@yield('script')
-@show
+@include('components.js')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sort').on('change', function () {
+           var url = $(this).val();
+           if(url){
+               window.location=url;
+           }
 
-</body>
+           return false;
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sort_price').on('change', function () {
+            var url = $(this).val();
+            if(url){
+                window.location=url;
+            }
+
+            return false;
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sort_price1').on('change', function () {
+            var url = $(this).val();
+            if(url){
+                window.location=url;
+            }
+
+            return false;
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sort_price2').on('change', function () {
+            var url = $(this).val();
+            if(url){
+                window.location=url;
+            }
+
+            return false;
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sort_price3').on('change', function () {
+            var url = $(this).val();
+            if(url){
+                window.location=url;
+            }
+
+            return false;
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.add-to-cart').click(function () {
+            swal("Ô la lá!");
+        });
+    });
+</script>
 
 </html>

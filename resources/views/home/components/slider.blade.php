@@ -12,15 +12,17 @@
             </div>
 
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{asset('public/frontend/images/slider/slider-1.jpg')}}" alt="Los Angeles" class="d-block w-100">
+                @php
+                    $i = 0;
+                @endphp
+                @foreach($slider as $key => $slide)
+                    @php
+                        $i++;
+                    @endphp
+                <div class="carousel-item {{$i==1 ? 'active' : '' }}">
+                    <img src="{{asset('public/upload/banner/'.$slide->banner_image)}}" alt="{{$slide->banner_name}}" class="d-block w-100">
                 </div>
-                <div class="carousel-item">
-                    <img src="{{asset('public/frontend/images/slider/slider-2.jpg')}}" alt="Chicago" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset('public/frontend/images/slider/slider-3.jpg')}}" alt="New York" class="d-block w-100">
-                </div>
+                @endforeach
             </div>
 
             <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">

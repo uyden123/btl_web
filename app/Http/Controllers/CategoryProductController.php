@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Slider;
 use Illuminate\Http\Request;
 use DB;
 use App\Category;
+use App\Product;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -80,11 +82,48 @@ class CategoryProductController extends Controller
         return Redirect::to('all-category-product');
     }
 
-    public function show_category_home($category_id){
+    /*public function show_category_home($category_id){
         $category_by_id = DB::table('tbl_product')
             ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
             ->where('tbl_product.category_id', $category_id)->paginate(20);
         $breadcrumb_name = DB::table('tbl_category_product')->where('category_id', $category_id)->first()->category_name;
         return view('shop.components.product')->with('category_by_id', $category_by_id)->with('breadcrumb_name', $breadcrumb_name);
+    }*/
+
+    public function show_category_home(Request $request ,$slug_category_product)
+    {
+
+        $cate_product = DB::table('tbl_category_product')->where('category_status', '0')->orderby('category_id', 'desc')->get();
+
+        $category_name = DB::table('tbl_category_product')->where('tbl_category_product.slug_category_product', $slug_category_product)->limit(1)->get();
+
+        $category_by_slug = Category::where('slug_category_product', $slug_category_product)->get();
+        foreach ($category_by_slug as $key => $cate) {
+            $category_id = $cate->category_id;
+        }
+
+        if (isset($_GET['sort_by'])){
+            $sort_by = $_GET['sort_by'];
+            if ($sort_by=='giam_dan'){
+                $category_by_id = Product::with('category')->where('category_id', $category_id)->orderBy('product_price', 'desc')->paginate(12)->appends(request()->query());
+            }elseif ($sort_by=='tang_dan'){
+                $category_by_id = Product::with('category')->where('category_id', $category_id)->orderBy('product_price', 'asc')->paginate(12)->appends(request()->query());
+            }
+        }elseif (isset($_GET['sort_price'])){
+            $sort = $_GET['sort_price'];
+            if ($sort=='duoi_500'){
+                $category_by_id = Product::with('category')->where('category_id', $category_id)->whereBetween('product_price', [0,499999])->paginate(12)->appends(request()->query());
+            }elseif ($sort=='500_1trieu'){
+                $category_by_id = Product::with('category')->where('category_id', $category_id)->whereBetween('product_price', [500000,1000000])->paginate(12)->appends(request()->query());
+            }elseif ($sort=='1trieu_2trieu'){
+                $category_by_id = Product::with('category')->where('category_id', $category_id)->whereBetween('product_price', [1000000,2000000])->paginate(12)->appends(request()->query());
+            }elseif ($sort=='tren_2trieu'){
+                $category_by_id = Product::with('category')->where('category_id', $category_id)->whereBetween('product_price', [2000001,9999999999])->paginate(12)->appends(request()->query());
+            }
+        }else{
+            $category_by_id = DB::table('tbl_product')->join('tbl_category_product', 'tbl_product.category_id', '=', 'tbl_category_product.category_id')->where('tbl_category_product.slug_category_product', $slug_category_product)->paginate(12);
+        }
+
+        return view('shop.components.product')->with('category',$cate_product)->with('category_by_id',$category_by_id)->with('category_name',$category_name);
     }
 }

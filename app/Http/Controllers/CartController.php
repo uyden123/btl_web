@@ -40,7 +40,7 @@ class CartController extends Controller
         $data['options']['image'] = $product_info->product_image;
         Cart::add($data);
         Cart::setGlobalTax(10);
-        return Redirect::to('/show-cart');
+        return Redirect::back();
     }
 
     public function show_cart(){
@@ -51,13 +51,13 @@ class CartController extends Controller
 
     public function delete_to_cart($rowId){
         Cart::update($rowId,0);
-        return Redirect::to('/show-cart');
+        return Redirect::to('/gio-hang');
     }
 
     public function update_cart_quantity(Request $request){
         $rowId = $request->rowId_cart;
         $qty = $request->cart_quantity;
         Cart::update($rowId,$qty);
-        return Redirect::to('/show-cart');
+        return Redirect::to('/gio-hang');
     }
 }

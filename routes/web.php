@@ -22,9 +22,8 @@ Route::get('/blog', 'HomeController@blog');
 Route::get('/lien-he', 'HomeController@contact');
 Route::get('/gioi-thieu', 'HomeController@about');
 //danh muc san pham trang chu
-Route::get('/cua-hang-cafe/{category_id}', 'CategoryProductController@show_category_home');
-Route::get('/thuong-hieu-san-pham/{brand_id}', 'BrandProductController@show_brand_home');
-Route::get('/chi-tiet-san-pham/{product_id}', 'ProductController@details_product');
+Route::get('/cua-hang-cafe/{slug_category_product}', 'CategoryProductController@show_category_home');
+Route::get('/chi-tiet-san-pham/{slug_product}','ProductController@details_product');
 
 //Backend
 Route::get('/admin', 'AdminController@index');
@@ -90,12 +89,12 @@ Route::get('/blog', 'BlogController@search')->name('search');
 
 //card
 Route::post('/save-cart', 'CartController@save_cart');
-Route::get('/show-cart', 'CartController@show_cart');
+Route::get('/gio-hang', 'CartController@show_cart');
 Route::get('/delete-to-cart/{rowId}', 'CartController@delete_to_cart');
 Route::post('/update-cart-quantity', 'CartController@update_cart_quantity');
 
 //checkout
-Route::get('/login-checkout', 'CheckoutController@login_checkout');
+Route::get('/dang-nhap', 'CheckoutController@login_checkout');
 Route::get('/logout-checkout', 'CheckoutController@logout_checkout');
 Route::get('/signup-checkout', 'CheckoutController@signup_checkout');
 Route::post('/add-customer', 'CheckoutController@add_customer');
@@ -107,5 +106,23 @@ Route::post('/order-place', 'CheckoutController@order_place');
 
 //order
 Route::get('/manage-order', 'OrderController@manage_order');
+Route::get('/history-order', 'OrderController@history_order');
 Route::get('/print-order/{checkout_code}', 'OrderController@print_order');
 Route::get('/view-order/{order_code}', 'OrderController@view_order');
+Route::get('/delete-order/{order_code}', 'OrderController@delete_order');
+Route::get('/edit-order/{order_code}', 'OrderController@edit_order');
+Route::post('/update-order/{order_code}', 'OrderController@update_order');
+
+//gallery
+Route::get('/add-gallery/{product_id}', 'GalleryController@add_gallery');
+Route::post('/select-gallery', 'GalleryController@select_gallery');
+Route::post('/insert-gallery/{pro_id}', 'GalleryController@insert_gallery');
+Route::post('/update-gallery', 'GalleryController@update_gallery');
+Route::post('/update-image-gallery', 'GalleryController@update_image_gallery');
+Route::post('/delete-gallery', 'GalleryController@delete_gallery');
+
+//banner
+Route::get('/all-banner', 'BannerContronler@all_banner');
+Route::get('/add-banner', 'BannerContronler@add_banner');
+Route::post('/insert-banner', 'BannerContronler@insert_banner');
+Route::get('/delete-banner/{banner_id}', 'BannerContronler@delete_banner');
