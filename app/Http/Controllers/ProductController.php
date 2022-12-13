@@ -95,6 +95,7 @@ class ProductController extends Controller
         }
 
         DB::table('tbl_product')->where('product_id',$product_id)->update($data);
+        Session::flash('message','Cập nhật sản phẩm thành công!');
         return Redirect::to('all-product');
     }
 

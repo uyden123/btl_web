@@ -237,6 +237,7 @@ ul.sidebar-menu li a.active i {
     margin-top:80px;
     padding:15px;
     width:100%;
+    min-height: 600px;
 }
 .brand {
     background:#c7a17a;
@@ -791,11 +792,11 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 
 .panel-heading a{
     position: absolute;
-    top: 10px;
+    top: 8px;
     left: 10px;
     text-transform: initial;
-    background-color: #9db2a0;
-    border-color: #9db2a0;
+    color: #000;
+    font-size: 18px;
 }
 
 .panel {

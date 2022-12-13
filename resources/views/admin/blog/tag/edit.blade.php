@@ -6,7 +6,7 @@
     <!-- Main content -->
     <section class="panel">
         <header class="panel-heading">
-            <a href="{{URL::to('/admin/blog_tag')}}" class="btn btn-warning">
+            <a href="{{URL::to('/admin/blog_tag')}}" class="btn">
                 <i class="fa fa-arrow-left"> Trở về</i>
             </a>
             Cập nhật TAG bài viết

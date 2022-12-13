@@ -11,7 +11,7 @@
     <!-- Main content -->
     <section class="panel">
         <header class="panel-heading">
-            <a href="{{URL::to('/admin/blog_post')}}" class="btn btn-warning">
+            <a href="{{URL::to('/admin/blog_post')}}" class="btn">
                 <i class="fa fa-arrow-left"> Trở về</i>
             </a>
             <span>Cập nhật bài viết</span>
