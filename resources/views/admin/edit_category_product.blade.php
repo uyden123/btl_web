@@ -17,7 +17,7 @@
                             <input type="text" value="{{ $edit_value->category_name }}" name="category_product_name" class="form-control" id="exampleInputEmail1" placeholder="Tên danh mục">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Slug</label>
+                            <label for="exampleInputEmail1">Đường dẫn</label>
                             <input type="text" value="{{ $edit_value->slug_category_product }}" name="slug_category_product" class="form-control" id="exampleInputEmail1" placeholder="Tên danh mục">
                         </div>
                         <div class="form-group">

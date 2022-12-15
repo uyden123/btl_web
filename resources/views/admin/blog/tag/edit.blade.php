@@ -1,14 +1,11 @@
 @extends('admin_layout')
 @section('admin_content')
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content">
 
     <!-- Main content -->
     <section class="panel">
         <header class="panel-heading">
-            <a href="{{URL::to('/admin/blog_tag')}}" class="btn">
-                <i class="fa fa-arrow-left"> Trở về</i>
-            </a>
             Cập nhật TAG bài viết
         </header>
 
@@ -22,12 +19,11 @@
                             <label for="tag_name">Tên TAG</label>
                             <input type="text" name="tag_name" class="form-control" id="tag_name" value="{{$tag->name}}">
                         </div>
-                        <div class="form-group">
-                            <label for="tag_slug">Slug</label>
-                            <input type="text" name="tag_slug" class="form-control" id="blog_description" value="{{$tag->slug}}">
-                        </div>
 
-                        <button type="submit" class="btn btn-info">Thêm TAG</button>
+                        <button type="submit" class="btn btn-info">Cập nhật</button>
+                        <a href="{{URL::to('/admin/blog_tag')}}" class="btn btn-warning">
+                            Trở về
+                        </a>
                     </form>
                 </div>
             </div>

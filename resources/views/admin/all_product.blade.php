@@ -1,13 +1,12 @@
 @extends('admin_layout')
 
 @section('headSection')
-<link href="{{ asset('public/backend/css/dataTables.bootstrap.css') }}" rel='stylesheet' type='text/css' />
-<link href="{{ asset('public/backend/css/jquery.dataTables.min.css') }}" rel='stylesheet' type='text/css' />
+<link href="{{ asset('public/backend/css/datatables.min.css') }}" rel='stylesheet' type='text/css' />
 @endsection
 
 @section('admin_content')
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content">
 
     <!-- Main content -->
     <section class="panel">
@@ -24,7 +23,7 @@
                                     <th>No.</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Ảnh liên quan</th>
-                                    <th>Slug</th>
+                                    <th>Đường dẫn</th>
                                     <th>Hình ảnh</th>
                                     <th>Giá</th>
                                     <th>Giá cũ</th>
@@ -69,8 +68,7 @@
 @endsection
 
 @section('footerSection')
-<script src="{{ asset('public/backend/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('public/backend/js/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('public/backend/js/datatables.js') }}"></script>
 <script>
     $("#example1").DataTable();
 </script>

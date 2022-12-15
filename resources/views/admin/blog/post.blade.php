@@ -6,14 +6,11 @@
 
 @section('admin_content')
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content">
 
     <!-- Main content -->
     <section class="panel">
         <header class="panel-heading">
-            <a href="{{URL::to('/admin/blog_post')}}" class="btn">
-                <i class="fa fa-arrow-left"> Trở về</i>
-            </a>
             Thêm bài viết
         </header>
 
@@ -32,11 +29,8 @@
                             <input type="text" name="blog_description" class="form-control" id="blog_description" placeholder="Nhập mô tả" value="{{old('blog_description')}}">
                         </div>
                         <div class="form-group">
-                            <label for="blog_slug">Slug</label>
-                            <input type="text" name="blog_slug" class="form-control" id="blog_slug" placeholder="Nhập slug" value="{{old('blog_slug')}}">
-                        </div>
-                        <div class="form-group">
                             <label for="thumbnails">Ảnh Thumbnails</label>
+                            <br>
                             <input type="file" name="blog_thumbnails" id="thumbnails">
                         </div>
                         <div class="form-group">
@@ -69,6 +63,9 @@
                             </label>
                         </div>
                         <button type="submit" name="add_blog" class="btn btn-info">Thêm bài viết</button>
+                        <a href="{{URL::to('/admin/blog_post')}}" class="btn btn-warning">
+                            Trở về
+                        </a>
                     </form>
                 </div>
             </div>

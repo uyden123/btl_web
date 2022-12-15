@@ -17,7 +17,7 @@
                             <input type="text" name="product_name" class="form-control" id="exampleInputEmail1" value="{{$pro->product_name}}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Slug sản phẩm</label>
+                            <label for="exampleInputEmail1">Đường dẫn sản phẩm</label>
                             <input type="text" name="slug_product" class="form-control" id="exampleInputEmail1" value="{{$pro->product_name}}">
                         </div>
                         <div class="form-group">

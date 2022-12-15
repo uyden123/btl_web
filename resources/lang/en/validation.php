@@ -148,12 +148,12 @@ return [
     'attributes' => [
         "blog_title" => "Tiêu đề bài viết",
         "blog_description" => "Mô tả",
-        "blog_slug" => "Slug",
+        "blog_slug" => "Đường dẫn",
         "blog_thumbnails" => "Ảnh thumbnails",
         "blog_content" => "Nội dung bài viết",
-        'tag_slug' => 'Slug',
+        'tag_slug' => 'Đường dẫn',
         'tag_name' => 'Tên tag',
-        'category_slug' => 'Slug',
+        'category_slug' => 'Đường dẫn',
         'tags' => 'Tags',
         'categories' => 'Danh mục',
         'category_name' => 'Tên danh mục'

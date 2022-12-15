@@ -27,6 +27,7 @@ Route::get('/chi-tiet-san-pham/{slug_product}','ProductController@details_produc
 
 //Backend
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/login', 'AdminController@index');
 Route::get('/dashboard', 'AdminController@show_dashboard');
 Route::post('/admin-dashboard', 'AdminController@dashboard');
 Route::get('/logout', 'AdminController@logout');

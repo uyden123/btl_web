@@ -1,14 +1,11 @@
 @extends('admin_layout')
 @section('admin_content')
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content">
 
     <!-- Main content -->
     <section class="panel">
         <header class="panel-heading">
-            <a href="{{URL::to('/admin/blog_category')}}" class="btn">
-                <i class="fa fa-arrow-left"> Trở về</i>
-            </a>
             Danh mục bài viết
         </header>
 
@@ -22,12 +19,11 @@
                             <label for="category_name">Tên danh mục bài viết</label>
                             <input type="text" name="category_name" class="form-control" id="category_name" placeholder="Nhập tên">
                         </div>
-                        <div class="form-group">
-                            <label for="category_slug">Slug</label>
-                            <input type="text" name="category_slug" class="form-control" id="category_slug" placeholder="Nhập slug">
-                        </div>
 
                         <button type="submit" name="add_blog_category" class="btn btn-info">Thêm danh mục</button>
+                        <a href="{{URL::to('/admin/blog_category')}}" class="btn btn-warning">
+                            Trở về
+                        </a>
                     </form>
                 </div>
             </div>

@@ -1,13 +1,12 @@
 @extends('admin_layout')
 
 @section('headSection')
-<link href="{{ asset('public/backend/css/dataTables.bootstrap.css') }}" rel='stylesheet' type='text/css' />
-<link href="{{ asset('public/backend/css/jquery.dataTables.min.css') }}" rel='stylesheet' type='text/css' />
+<link href="{{ asset('public/backend/css/datatables.min.css') }}" rel='stylesheet' type='text/css' />
 @endsection
 
 @section('admin_content')
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content">
 
   <!-- Main content -->
   <section class="panel">
@@ -16,7 +15,7 @@
     <div class="row panel-body">
       <div class="col-md-12">
         <div class="box-header" style="margin: 1rem .5rem 1rem 0; text-align:center;">
-          <a class=" btn btn-success d-flex" href="{{ URL::to('/admin/blog_post/add_post')}}">Thêm bài mới</a>
+          <a class="btn btn-success d-flex btn-blog" href="{{ URL::to('/admin/blog_post/add_post')}}">Thêm bài mới</a>
         </div>
         <div class="box" style="border-top: 1px solid #000; padding-top: 1rem">
           <div class="box-body">
@@ -65,8 +64,7 @@
 @endsection
 
 @section('footerSection')
-<script src="{{ asset('public/backend/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('public/backend/js/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('public/backend/js/datatables.js') }}"></script>
 <script>
   $("#example1").DataTable();
 </script>

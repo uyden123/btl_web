@@ -6,14 +6,11 @@
 
 @section('admin_content')
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content">
 
     <!-- Main content -->
     <section class="panel">
         <header class="panel-heading">
-            <a href="{{URL::to('/admin/blog_post')}}" class="btn">
-                <i class="fa fa-arrow-left"> Trở về</i>
-            </a>
             <span>Cập nhật bài viết</span>
         </header>
 
@@ -31,13 +28,10 @@
                             <label for="blog_description">Mô tả</label>
                             <input type="text" name="blog_description" class="form-control" id="blog_description" value="{{$post->description}}">
                         </div>
-                        <div class=" form-group">
-                            <label for="blog_slug">Slug</label>
-                            <input type="text" name="blog_slug" class="form-control" id="blog_slug" value="{{$post->slug}}">
-                        </div>
                         <div class="form-group">
                             <label for="thumbnails">Ảnh Thumbnails </label>
                             <small>(không thêm mục này nếu muốn dùng ảnh cũ)</small>
+                            <br>
                             <input type="file" name="blog_thumbnails" id="thumbnails">
                         </div>
                         <div class="form-group">
@@ -80,6 +74,9 @@
                             </label>
                         </div>
                         <button type="submit" name="add_blog" class="btn btn-info">Cập nhật</button>
+                        <a href="{{URL::to('/admin/blog_post')}}" class="btn btn-warning">
+                            Trở về
+                        </a>
                     </form>
                 </div>
             </div>

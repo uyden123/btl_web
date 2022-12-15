@@ -6,12 +6,14 @@ use App\blog_category;
 use App\blog_post;
 use App\blog_tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Session;
 
 session_start();
 
 class BlogController extends Controller
 {
+
     public function blog_details(blog_post $post)
     {
         $tags = blog_tag::all();
@@ -62,7 +64,6 @@ class BlogController extends Controller
         $this->validate($request, [
             "blog_title" => "required|unique:blog_posts,title",
             "blog_description" => "required|unique:blog_posts,description",
-            "blog_slug" => "required|unique:blog_posts,slug",
             "blog_thumbnails" => "required",
             "blog_content" => "required",
             "tags" => "required",
@@ -71,12 +72,12 @@ class BlogController extends Controller
 
         $post = new blog_post;
         if ($request->hasFile('blog_thumbnails')) {
-            $path = $request->blog_thumbnails;
+            $path = $request->blog_thumbnails->store('public');;
             $post->image = $path;
         }
         $post->title = $request->blog_title;
         $post->description = $request->blog_description;
-        $post->slug = $request->blog_slug;
+        $post->slug = Str::slug($request->blog_title);
         $post->content = $request->blog_content;
         $post->status = $request->status == 1 ? $request->status : 0;
         $post->save();
@@ -89,13 +90,12 @@ class BlogController extends Controller
     public function add_blog_tag(Request $request)
     {
         $this->validate($request, [
-            "tag_name" => "required|unique:blog_tags,name",
-            "tag_slug" => "required|unique:blog_tags,slug",
+            "tag_name" => "required|unique:blog_tags,name"
         ]);
 
         $tag = new blog_tag;
         $tag->name = $request->tag_name;
-        $tag->slug = $request->tag_slug;
+        $tag->slug = Str::slug($request->tag_name);
         $tag->save();
         Session::flash('message', 'Đã thêm TAG thành công!');
         return redirect()->back();
@@ -104,13 +104,12 @@ class BlogController extends Controller
     public function add_blog_category(Request $request)
     {
         $this->validate($request, [
-            "category_name" => "required|unique:blog_categories,name",
-            "category_slug" => "required|unique:blog_categories,slug",
+            "category_name" => "required|unique:blog_categories,name"
         ]);
 
         $tag = new blog_category;
         $tag->name = $request->category_name;
-        $tag->slug = $request->category_slug;
+        $tag->slug = Str::slug($request->category_name);
         $tag->save();
         Session::flash('message', 'Đã thêm danh mục thành công!');
         return redirect()->back();
@@ -135,7 +134,6 @@ class BlogController extends Controller
         $this->validate($request, [
             "blog_title" => "required",
             "blog_description" => "required",
-            "blog_slug" => "required",
             "blog_content" => "required",
             "tags" => "required",
             "categories" => "required"
@@ -149,7 +147,7 @@ class BlogController extends Controller
         }
         $post->title = $request->blog_title;
         $post->description = $request->blog_description;
-        $post->slug = $request->blog_slug;
+        $post->slug = Str::slug($request->blog_title);
         $post->content = $request->blog_content;
         $post->status = $request->status == 1 ? $request->status : 0;
         $post->save();
@@ -173,12 +171,11 @@ class BlogController extends Controller
     public function update_blog_tag(Request $request, $id)
     {
         $this->validate($request, [
-            "tag_name" => "required",
-            "tag_slug" => "required",
+            "tag_name" => "required"
         ]);
         $tag = blog_tag::where('id', $id)->first();
         $tag->name = $request->tag_name;
-        $tag->slug = $request->tag_slug;
+        $tag->slug = Str::slug($request->tag_name);
         $tag->save();
         return redirect()->back()->with('message', 'Đã cập nhật TAG thành công!');
     }
@@ -198,12 +195,11 @@ class BlogController extends Controller
     public function update_blog_category(Request $request, $id)
     {
         $this->validate($request, [
-            "category_name" => "required",
-            "category_slug" => "required",
+            "category_name" => "required"
         ]);
         $category = blog_category::where('id', $id)->first();
         $category->name = $request->category_name;
-        $category->slug = $request->category_slug;
+        $category->slug = Str::slug($request->category_name);
         $category->save();
         return redirect()->back()->with('message', 'Đã cập nhật danh mục thành công!');
     }
