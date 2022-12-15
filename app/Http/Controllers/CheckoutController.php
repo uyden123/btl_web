@@ -130,7 +130,8 @@ class CheckoutController extends Controller
         }
 
         if ($data['payment_method']==1){
-            echo 'ck';
+            Cart::destroy();
+            return view('shop.components.cash');
         }else{
             Cart::destroy();//xoa gio hang ve rong
             $cate_product = DB::table('tbl_category_product')->where('category_status','0')->get();

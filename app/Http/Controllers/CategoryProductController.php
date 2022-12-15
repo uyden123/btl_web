@@ -20,6 +20,7 @@ class CategoryProductController extends Controller
         return view('shop.components.product')->with('category',$cate_product)->with('all_product',$all_product);
     }
 
+
     public function add_category_product(){
         $category = Category::where('category_parent_id',0)->orderby('category_id','desc')->get();
         return view('admin.add_category_product')->with(compact('category'));

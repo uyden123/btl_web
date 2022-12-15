@@ -23,9 +23,6 @@ class OrderController extends Controller
     }
 
     public function update_order(Request $request,$order_code){
-        $this->validate($request, [
-            "order_status" => "required",
-        ]);
         $data=array();
         $data['order_status'] = $request->order_status;
 

@@ -13,19 +13,6 @@ session_start();
 
 class CartController extends Controller
 {
-    public function add_to_cart(Request $request){
-        $data = $request->all();
-        $session_id = substr(md5(microtime()), rand(0,26),5);
-        $cart = Session::get('cart');
-        if ($cart==true){
-
-        }else{
-            $cart[] = array(
-
-            );
-        }
-    }
-
     public function save_cart(Request $request){
 
         $product_id = $request->product_id_hidden;
@@ -39,7 +26,7 @@ class CartController extends Controller
         $data['weight'] = $product_info->product_price;
         $data['options']['image'] = $product_info->product_image;
         Cart::add($data);
-        Cart::setGlobalTax(10);
+        Cart::setGlobalTax(0);
         return Redirect::back();
     }
 
