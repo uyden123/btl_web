@@ -52,7 +52,7 @@ class CheckoutController extends Controller
         Session::put('customer_id', $customer_id);
         Session::put('customer_name', $request->customer_name);
 
-        return Redirect::to('/checkout');
+        return Redirect::to('/dang-nhap');
     }
 
     public function checkout(){
@@ -84,7 +84,7 @@ class CheckoutController extends Controller
 
     public function logout_checkout(){
         Session::flush();
-        return Redirect::to('/dang-nhap');
+        return Redirect::to('/trang-chu');
     }
 
     public function login_customer(Request $request){
@@ -93,7 +93,7 @@ class CheckoutController extends Controller
         $results = DB::table('tbl_customer')->where('customer_email',$email)->where('customer_password',$password)->first();
         if ($results){
             Session::put('customer_id', $results->customer_id);
-            return Redirect::to('/checkout');
+            return Redirect::to('/trang-chu');
         }else{
             return Redirect::to('/dang-nhap');
         }

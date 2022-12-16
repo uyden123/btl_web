@@ -32,7 +32,7 @@
                         <div class="text-uppercase">
                             <span class="badge bg-secondary">{{$value->category_name}}</span>
                         </div>
-                        <h5 class="mt-2 mb-2">Mô tả: Cà Phê Hạt Rang Mộc Trung Nguyên Legend Success 1 340g</h5>
+                        <h5 class="mt-2 mb-2">Mô tả: {{$value->product_desc}}</h5>
                         <div class="details_price">
                             <span class="price_text"><del>{{number_format($value->product_price_old).'đ'}}</del> /
                                 <strong class="price_text_1">{{number_format($value->product_price).'đ'}}
@@ -86,7 +86,7 @@
             <div class="product_description_wrap wow fadeInUp" data-wow-delay=".1s">
                 <div class="row">
                     <h6 class="title_products">Mô tả sản phẩm</h6>
-                    <pre>{{$value->product_desc}}</pre>
+                    {!!htmlspecialchars_decode($value->product_content)!!}
                 </div>
             </div>
         </div>

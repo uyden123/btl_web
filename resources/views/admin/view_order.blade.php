@@ -7,13 +7,6 @@
                     Thông tin người mua
                 </div>
                 <div class="table-responsive">
-                    <?php
-                    $message = Session::get('message');
-                    if ($message){
-                        echo '<span class="text-alert text-danger justify-content-center text-center">'.$message.'</span>';
-                        Session::put('message', null);
-                    }
-                    ?>
                     <table class="table table-striped b-t b-light">
                         <thead>
                         <tr>
@@ -41,13 +34,6 @@
                     Thông tin vận chuyển
                 </div>
                 <div class="table-responsive">
-                    <?php
-                    $message = Session::get('message');
-                    if ($message){
-                        echo '<span class="text-alert text-danger justify-content-center text-center">'.$message.'</span>';
-                        Session::put('message', null);
-                    }
-                    ?>
                     <table class="table table-striped b-t b-light">
                         <thead>
                         <tr>
@@ -77,13 +63,6 @@
                     Chi tiết đơn hàng
                 </div>
                 <div class="table-responsive">
-                    <?php
-                    $message = Session::get('message');
-                    if ($message){
-                        echo '<span class="text-alert text-danger justify-content-center text-center">'.$message.'</span>';
-                        Session::put('message', null);
-                    }
-                    ?>
                     <table class="table table-striped b-t b-light">
                         <thead>
                         <tr>

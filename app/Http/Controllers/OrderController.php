@@ -83,11 +83,8 @@ td {
 $output .= '
 <h2>HÓA ĐƠN:#'.$checkout_code.'
 </h2>';
+
         $output .= '
-<p type="text">Ngày đặt:#'.'
-</p>';
-        $output .= '
-<p>This property sets the horizontal alignment (like left, right, or center) of the content in th or td.</p>
 <table style="border: 1px solid white;">
   <tr>
     <th style="width: 50%; border: 1px solid white; text-align:left;">From:</th>
@@ -161,7 +158,7 @@ $output .= '
     }
 
     public function view_order($order_code){
-        $order_details = OrderDetails::where('order_code',$order_code)->get();
+        $order_details = OrderDetails::with('product')->where('order_code',$order_code)->get();
         $order = Order::where('order_code',$order_code)->get();
 
         foreach ($order as $key => $ord){
@@ -174,6 +171,6 @@ $output .= '
 
         $order_details_product = OrderDetails::with('product')->where('order_code',$order_code)->get();
 
-        return view('admin.view_order')->with(compact('order','customer','shipping','order_details_product'));
+        return view('admin.view_order')->with(compact('order_details','order','customer','shipping','order_details_product'));
     }
 }
